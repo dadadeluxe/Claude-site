@@ -66,27 +66,42 @@
      --------------------------------------------------------------------- */
   function countUp(el) {
     const target = Number(el.dataset.count);
-    if (!motionOK || !target) return;
-    const from = Math.round(target * 0.4);
-    const start = performance.now() + 250;
-    const duration = 1100;
+    if (!motionOK || !target || el.dataset.counted) return;
+    el.dataset.counted = '1';
+    const from = Math.round(target * 0.8);
+    const start = performance.now();
+    const duration = 800;
+    el.style.minWidth = `${el.offsetWidth}px`;
+    el.setAttribute('aria-hidden', 'true');
     el.textContent = String(from);
     const tick = (now) => {
       const t = clamp((now - start) / duration, 0, 1);
       el.textContent = String(Math.round(lerp(from, target, 1 - Math.pow(1 - t, 4))));
-      if (t < 1) requestAnimationFrame(tick);
+      if (t < 1) { requestAnimationFrame(tick); return; }
+      el.textContent = String(target);
+      el.removeAttribute('aria-hidden');
+      el.style.minWidth = '';
     };
     requestAnimationFrame(tick);
   }
 
+  function reveal(el) {
+    revealIO.unobserve(el);
+    el.classList.add('is-in');
+    $$('[data-count]', el).forEach(countUp);
+  }
+
   const revealIO = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('is-in');
-      $$('[data-count]', entry.target).forEach(countUp);
-      revealIO.unobserve(entry.target);
+      if (entry.isIntersecting) reveal(entry.target);
     });
   }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+
+  // Un élément atteint au clavier apparaît immédiatement (le focus reste visible)
+  document.addEventListener('focusin', (e) => {
+    const el = e.target.closest && e.target.closest('[data-reveal]:not(.is-in)');
+    if (el) reveal(el);
+  });
 
   /* ---------------------------------------------------------------------
      Navigation : fond au scroll, masquage en descendant, menu mobile,
@@ -105,7 +120,9 @@
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
     menu.inert = !open;
+    $$('main, footer, [data-action-bar]').forEach((el) => { el.inert = open; });
     root.classList.toggle('menu-open', open);
+    requestUpdate();
   };
   if (toggle && menu) {
     toggle.addEventListener('click', () => setMenu(!menuOpen));
@@ -116,6 +133,7 @@
     window.matchMedia('(min-width: 961px)').addEventListener('change', (e) => { if (e.matches) setMenu(false); });
   }
   if (nav) nav.addEventListener('focusin', () => nav.classList.remove('is-hidden'));
+  const navSolid = Boolean(nav && nav.classList.contains('is-scrolled'));
 
   const navLinks = $$('.nav__links a');
   const indicator = $('.nav__indicator');
@@ -159,9 +177,18 @@
   const stepsLine = stepsBox && $('.steps__line', stepsBox);
   const steps = stepsBox ? $$('.step', stepsBox) : [];
 
-  function updateSteps() {
-    if (!stepsBox) return;
-    const r = stepsBox.getBoundingClientRect();
+  function fitStepsLine() {
+    if (!stepsLine || !steps.length) return;
+    stepsLine.style.bottom = '';
+    if (window.innerWidth > 960) return;
+    const icon = $('.icon-tile', steps[steps.length - 1]);
+    const b = stepsBox.getBoundingClientRect();
+    const i = icon.getBoundingClientRect();
+    stepsLine.style.bottom = `${Math.round(b.bottom - (i.top + i.height / 2))}px`;
+  }
+
+  function updateSteps(r) {
+    if (!stepsBox || !r) return;
     if (r.bottom < -100 || r.top > vh + 100) return;
     const p = motionOK ? clamp((vh * 0.75 - r.top) / (r.height + vh * 0.15), 0, 1) : 1;
     stepsLine.style.setProperty('--p', p.toFixed(3));
@@ -174,9 +201,8 @@
   const hero = $('[data-hero]');
   const showcase = $('.showcase');
 
-  function updateShowcase() {
-    if (!showcase || !motionOK) return;
-    const r = hero.getBoundingClientRect();
+  function updateShowcase(r) {
+    if (!showcase || !motionOK || !r) return;
     if (r.bottom < 0) return;
     const s = clamp(-r.top / (r.height * 0.55), 0, 1);
     showcase.style.setProperty('--s', s.toFixed(3));
@@ -187,9 +213,8 @@
      --------------------------------------------------------------------- */
   const progress = $('.progress');
 
-  function updateProgress(y) {
+  function updateProgress(y, max) {
     if (!progress) return;
-    const max = root.scrollHeight - vh;
     progress.style.setProperty('--p', max > 0 ? clamp(y / max, 0, 1).toFixed(4) : '0');
   }
 
@@ -200,11 +225,11 @@
   const actionBar = $('[data-action-bar]');
   const contact = $('#contact');
 
-  function updateActionBar() {
-    if (!actionBar || !hero) return;
-    const pastHero = hero.getBoundingClientRect().bottom < vh * 0.4;
-    const atContact = contact && contact.getBoundingClientRect().top < vh * 0.9;
-    actionBar.classList.toggle('is-visible', pastHero && !atContact && !menuOpen);
+  function updateActionBar(heroR, contactTop) {
+    if (!actionBar || !heroR) return;
+    const show = heroR.bottom < vh * 0.4 && contactTop >= vh * 0.9 && !menuOpen;
+    actionBar.classList.toggle('is-visible', show);
+    if (!menuOpen) actionBar.inert = !show;
   }
 
   /* ---------------------------------------------------------------------
@@ -215,9 +240,14 @@
 
   function update() {
     ticking = false;
+    // Toutes les lectures d'abord, toutes les écritures ensuite (un seul calcul de style)
     const y = window.scrollY;
+    const max = root.scrollHeight - vh;
+    const heroR = hero ? hero.getBoundingClientRect() : null;
+    const stepsR = stepsBox ? stepsBox.getBoundingClientRect() : null;
+    const contactTop = contact ? contact.getBoundingClientRect().top : Infinity;
     if (nav) {
-      nav.classList.toggle('is-scrolled', y > 8);
+      nav.classList.toggle('is-scrolled', navSolid || y > 8);
       if (!menuOpen) {
         if (y < 200) {
           nav.classList.remove('is-hidden');
@@ -228,10 +258,10 @@
         }
       }
     }
-    updateProgress(y);
-    updateShowcase();
-    updateSteps();
-    updateActionBar();
+    updateProgress(y, max);
+    updateShowcase(heroR);
+    updateSteps(stepsR);
+    updateActionBar(heroR, contactTop);
   }
   const requestUpdate = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
   window.addEventListener('scroll', requestUpdate, { passive: true });
@@ -239,7 +269,7 @@
   let resizeTimer = 0;
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => { vh = window.innerHeight; moveIndicator(activeLink); update(); }, 120);
+    resizeTimer = setTimeout(() => { vh = window.innerHeight; moveIndicator(activeLink); fitStepsLine(); update(); }, 120);
   });
 
   /* ---------------------------------------------------------------------
@@ -309,7 +339,7 @@
     if (!scrollRun) return;
     cancelAnimationFrame(scrollRun.raf);
     root.style.scrollBehavior = '';
-    scrollRun.done();
+    scrollRun.done(false);
     scrollRun = null;
   }
   ['wheel', 'touchstart', 'keydown'].forEach((type) => window.addEventListener(type, stopScroll, { passive: true }));
@@ -322,9 +352,10 @@
     const to = clamp(target.getBoundingClientRect().top + from - offset, 0, max);
     const distance = to - from;
     // Assez long pour suivre le mouvement, jamais lent : 0,55 à 1,1 s selon la distance
-    const duration = motionOK ? clamp(Math.abs(distance) * 0.35, 550, 1100) : 280;
+    const duration = clamp(Math.abs(distance) * 0.35, 550, 1100);
     return new Promise((resolve) => {
-      if (Math.abs(distance) < 2) { resolve(); return; }
+      if (Math.abs(distance) < 2) { resolve(true); return; }
+      if (!motionOK) { window.scrollTo(0, to); resolve(true); return; }
       root.style.scrollBehavior = 'auto';
       const start = performance.now();
       scrollRun = { raf: 0, done: resolve };
@@ -336,7 +367,7 @@
         } else {
           root.style.scrollBehavior = '';
           scrollRun = null;
-          resolve();
+          resolve(true);
         }
       };
       scrollRun.raf = requestAnimationFrame(step);
@@ -384,7 +415,10 @@
     if (!target) return;
     e.preventDefault();
     const choice = a.dataset.offer ? selectOffer(a.dataset.offer) : null;
-    smoothScrollTo(target).then(() => {
+    // Sur mobile, la case cochée est sous le texte de contact : on vise le formulaire
+    const dest = choice && form && choice.getBoundingClientRect().bottom - target.getBoundingClientRect().top > window.innerHeight - 120 ? form : target;
+    smoothScrollTo(dest).then((arrived) => {
+      if (!arrived) return;
       if (history.pushState) history.pushState(null, '', hash);
       if (!target.hasAttribute('tabindex') && !target.matches('a, button, input, select, textarea, summary')) {
         target.setAttribute('tabindex', '-1');
@@ -399,10 +433,12 @@
   $$('.plan').forEach((plan) => {
     const cta = $('[data-offer]', plan);
     if (!cta) return;
+    let timer = 0;
     plan.addEventListener('click', (e) => {
       if (e.target.closest('a, button')) return;
-      if (String(window.getSelection())) return;
-      cta.click();
+      clearTimeout(timer);
+      if (e.detail > 1) return;
+      timer = setTimeout(() => { if (!String(window.getSelection())) cta.click(); }, 250);
     });
   });
 
@@ -432,10 +468,11 @@
         area.select();
         try { ok = document.execCommand('copy'); } catch (__) { ok = false; }
         area.remove();
+        btn.focus({ preventScroll: true });
       }
-      label.textContent = ok ? 'Copié ✓' : 'Sélectionnez l’adresse';
+      label.textContent = ok ? 'Copié ✓' : 'Copie impossible';
       btn.classList.toggle('is-done', ok);
-      live.textContent = ok ? `Adresse ${text} copiée.` : '';
+      live.textContent = ok ? `${btn.dataset.copied || 'Copié'} : ${text}.` : 'Copie impossible.';
       setTimeout(() => { label.textContent = 'Copier'; btn.classList.remove('is-done'); }, 2200);
     });
   });
@@ -518,8 +555,8 @@
       status.textContent = `Votre messagerie devrait s’ouvrir avec la demande pré-remplie : il ne reste qu’à l’envoyer. Rien ne s’ouvre ? Écrivez à ${form.dataset.email} ou appelez le ${form.dataset.phone}.`;
       if (submit && submitLabel) {
         submit.classList.add('is-done');
-        submitLabel.textContent = 'Demande préparée ✓';
-        setTimeout(() => { submit.classList.remove('is-done'); submitLabel.textContent = 'Envoyer ma demande'; }, 4000);
+        submitLabel.textContent = 'E-mail prêt, à envoyer ✓';
+        setTimeout(() => { submit.classList.remove('is-done'); submitLabel.textContent = 'Préparer mon e-mail'; }, 4000);
       }
     });
   }
@@ -535,12 +572,13 @@
     root.classList.add('is-ready');
     $$('[data-reveal], [data-split]').forEach((el) => revealIO.observe(el));
     moveIndicator(activeLink);
+    fitStepsLine();
     update();
     // Filet de sécurité : ce qui est déjà à l'écran ne reste jamais invisible
     setTimeout(() => {
       $$('[data-reveal]:not(.is-in), [data-split]:not(.is-in)').forEach((el) => {
         const r = el.getBoundingClientRect();
-        if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('is-in');
+        if (r.top < window.innerHeight && r.bottom > 0) reveal(el);
       });
     }, 2500);
   });
