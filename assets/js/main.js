@@ -61,10 +61,29 @@
 
   $$('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 
+  /* ---------------------------------------------------------------------
+     Apparitions au scroll + compteurs de prix
+     --------------------------------------------------------------------- */
+  function countUp(el) {
+    const target = Number(el.dataset.count);
+    if (!motionOK || !target) return;
+    const from = Math.round(target * 0.4);
+    const start = performance.now() + 250;
+    const duration = 1100;
+    el.textContent = String(from);
+    const tick = (now) => {
+      const t = clamp((now - start) / duration, 0, 1);
+      el.textContent = String(Math.round(lerp(from, target, 1 - Math.pow(1 - t, 4))));
+      if (t < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
   const revealIO = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
       entry.target.classList.add('is-in');
+      $$('[data-count]', entry.target).forEach(countUp);
       revealIO.unobserve(entry.target);
     });
   }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
@@ -150,11 +169,35 @@
   }
 
   /* ---------------------------------------------------------------------
+     Hero : l'éventail de cartes s'ouvre et se redresse au scroll
+     --------------------------------------------------------------------- */
+  const hero = $('[data-hero]');
+  const showcase = $('.showcase');
+
+  function updateShowcase() {
+    if (!showcase || !motionOK) return;
+    const r = hero.getBoundingClientRect();
+    if (r.bottom < 0) return;
+    const s = clamp(-r.top / (r.height * 0.55), 0, 1);
+    showcase.style.setProperty('--s', s.toFixed(3));
+  }
+
+  /* ---------------------------------------------------------------------
+     Barre de progression de lecture
+     --------------------------------------------------------------------- */
+  const progress = $('.progress');
+
+  function updateProgress(y) {
+    if (!progress) return;
+    const max = root.scrollHeight - vh;
+    progress.style.setProperty('--p', max > 0 ? clamp(y / max, 0, 1).toFixed(4) : '0');
+  }
+
+  /* ---------------------------------------------------------------------
      Barre d'action mobile : apparaît une fois le hero dépassé,
      s'efface quand le formulaire de contact est à l'écran
      --------------------------------------------------------------------- */
   const actionBar = $('[data-action-bar]');
-  const hero = $('[data-hero]');
   const contact = $('#contact');
 
   function updateActionBar() {
@@ -185,6 +228,8 @@
         }
       }
     }
+    updateProgress(y);
+    updateShowcase();
     updateSteps();
     updateActionBar();
   }
@@ -198,16 +243,36 @@
   });
 
   /* ---------------------------------------------------------------------
-     Souris : lueur qui suit le pointeur dans les cartes (montre ce qui est
-     survolé) et léger relief de l'éventail du hero
+     Souris : lumière qui suit le pointeur, relief des cartes cliquables,
+     léger mouvement de l'éventail du hero
      --------------------------------------------------------------------- */
   if (finePointer) {
-    $$('.card').forEach((card) => {
+    $$('.card, .way').forEach((card) => {
+      const tilts = motionOK && card.matches('.card--link, .plan');
+      let frame = 0;
+      let last = null;
+      const apply = () => {
+        frame = 0;
+        const { x, y, r } = last;
+        card.style.setProperty('--mx', `${x}px`);
+        card.style.setProperty('--my', `${y}px`);
+        if (tilts) {
+          card.style.setProperty('--rx', `${((0.5 - y / r.height) * 5).toFixed(2)}deg`);
+          card.style.setProperty('--ry', `${((x / r.width - 0.5) * 5).toFixed(2)}deg`);
+        }
+      };
       card.addEventListener('pointermove', (e) => {
         const r = card.getBoundingClientRect();
-        card.style.setProperty('--mx', `${e.clientX - r.left}px`);
-        card.style.setProperty('--my', `${e.clientY - r.top}px`);
+        last = { x: e.clientX - r.left, y: e.clientY - r.top, r };
+        if (!frame) frame = requestAnimationFrame(apply);
       });
+      if (tilts) {
+        card.addEventListener('pointerleave', () => {
+          if (frame) { cancelAnimationFrame(frame); frame = 0; }
+          card.style.setProperty('--rx', '0deg');
+          card.style.setProperty('--ry', '0deg');
+        });
+      }
     });
 
     const stage = $('[data-tilt]');
@@ -231,6 +296,88 @@
       hero.addEventListener('pointerleave', () => { t.tx = 0; t.ty = 0; kick(); });
     }
   }
+
+  /* ---------------------------------------------------------------------
+     Continuité offre → contact : toute la carte d'offre est cliquable,
+     l'offre choisie est cochée dans le formulaire et mise en évidence
+     --------------------------------------------------------------------- */
+  const form = $('[data-form]');
+
+  function flashTarget(el) {
+    if (!el || !motionOK) return;
+    el.classList.remove('is-target');
+    void el.offsetWidth;
+    el.classList.add('is-target');
+    setTimeout(() => el.classList.remove('is-target'), 1900);
+  }
+
+  function selectOffer(value) {
+    if (!form) return;
+    const box = $$('input[name="besoin"]', form).find((i) => i.value === value);
+    if (!box) return;
+    box.checked = true;
+    const choice = box.closest('.choice');
+    if (!motionOK || !choice) return;
+    // La mise en évidence se joue une fois le formulaire à l'écran
+    setTimeout(() => {
+      choice.classList.remove('is-flash');
+      void choice.offsetWidth;
+      choice.classList.add('is-flash');
+      setTimeout(() => choice.classList.remove('is-flash'), 1500);
+    }, 650);
+  }
+
+  $$('[data-offer]').forEach((el) => el.addEventListener('click', () => selectOffer(el.dataset.offer)));
+
+  $$('.plan').forEach((plan) => {
+    const cta = $('[data-offer]', plan);
+    if (!cta) return;
+    plan.addEventListener('click', (e) => {
+      if (e.target.closest('a, button')) return;
+      if (String(window.getSelection())) return;
+      cta.click();
+    });
+  });
+
+  // Arrivée sur une offre depuis le constat : la carte s'illumine
+  $$('a[href^="#offre-"]').forEach((a) => a.addEventListener('click', () => {
+    const target = $(a.getAttribute('href'));
+    setTimeout(() => flashTarget(target), motionOK ? 500 : 0);
+  }));
+
+  /* ---------------------------------------------------------------------
+     Copier l'adresse e-mail (utile si aucune messagerie n'est configurée)
+     --------------------------------------------------------------------- */
+  const live = document.createElement('span');
+  live.className = 'sr-only';
+  live.setAttribute('role', 'status');
+  document.body.append(live);
+
+  $$('[data-copy]').forEach((btn) => {
+    const label = $('.way__copy-label', btn) || btn;
+    btn.addEventListener('click', async () => {
+      const text = btn.dataset.copy;
+      let ok = false;
+      try {
+        await navigator.clipboard.writeText(text);
+        ok = true;
+      } catch (_) {
+        const area = document.createElement('textarea');
+        area.value = text;
+        area.setAttribute('readonly', '');
+        area.style.position = 'fixed';
+        area.style.opacity = '0';
+        document.body.append(area);
+        area.select();
+        try { ok = document.execCommand('copy'); } catch (__) { ok = false; }
+        area.remove();
+      }
+      label.textContent = ok ? 'Copié ✓' : 'Sélectionnez l’adresse';
+      btn.classList.toggle('is-done', ok);
+      live.textContent = ok ? `Adresse ${text} copiée.` : '';
+      setTimeout(() => { label.textContent = 'Copier'; btn.classList.remove('is-done'); }, 2200);
+    });
+  });
 
   /* ---------------------------------------------------------------------
      FAQ : ouverture et fermeture en douceur
@@ -265,9 +412,10 @@
      Formulaire : vérifie les champs puis ouvre la messagerie du visiteur
      avec la demande pré-remplie (aucune donnée ne transite par le site)
      --------------------------------------------------------------------- */
-  const form = $('[data-form]');
   if (form) {
     const status = $('.form__status', form);
+    const submit = $('button[type="submit"]', form);
+    const submitLabel = submit && $('.btn__label', submit);
     const rules = {
       nom: (v) => v.trim().length > 1,
       contact: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) || v.replace(/[^\d+]/g, '').length >= 9,
@@ -300,13 +448,18 @@
         `Nom : ${data.get('nom')}`,
         `Entreprise : ${data.get('entreprise') || '—'}`,
         `Me recontacter : ${data.get('contact')}`,
-        `Besoin : ${besoins.length ? besoins.join(', ') : '—'}`,
+        `Intéressé par : ${besoins.length ? besoins.join(', ') : '—'}`,
         '',
         data.get('message') || '',
       ].join('\n');
       const subject = `Demande de devis — ${data.get('entreprise') || data.get('nom')}`;
       window.location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      status.textContent = 'Votre messagerie s’ouvre avec la demande pré-remplie : il ne reste qu’à l’envoyer. Rien ne s’ouvre ? Écrivez directement à l’adresse ci-contre.';
+      status.textContent = `Votre messagerie s’ouvre avec la demande pré-remplie : il ne reste qu’à l’envoyer. Rien ne s’ouvre ? Écrivez à ${form.dataset.email} ou appelez le ${form.dataset.phone}.`;
+      if (submit && submitLabel) {
+        submit.classList.add('is-done');
+        submitLabel.textContent = 'Messagerie ouverte ✓';
+        setTimeout(() => { submit.classList.remove('is-done'); submitLabel.textContent = 'Envoyer ma demande'; }, 4000);
+      }
     });
   }
 
