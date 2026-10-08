@@ -1,66 +1,47 @@
-# Lumen — site vitrine d’agence (conseil & création de sites web)
+# Établi — site d’Elliot Mooser, studio web à Genève
 
-Site one-page très animé, inspiré du style Stripe : fond blanc, encre bleu nuit, une seule couleur d’action indigo (`#533afd`), typographie fine (poids 300), filets de 1 px et aucune ombre.
+Site vitrine d’**Établi**, l’activité indépendante d’Elliot Mooser : création de sites web clairs et abordables pour les artisans, commerces et restaurants de Genève.
 
-HTML, CSS et JavaScript « vanilla » : aucune dépendance ni étape de build.
+Direction artistique : « verre dépoli à minuit », version adoucie. Fond encre (jamais noir pur), texte jamais blanc pur, un seul accent violet éteint réservé aux actions, cartes en verre et filets fins. HTML, CSS et JavaScript sans dépendance ni étape de build.
 
-## Lancer le site en local
+## Voir le site en local
 
 ```bash
-npx serve .
-# ou
+cd Claude-site
 python3 -m http.server 8080
+# ou : npx serve .
 ```
 
-Puis ouvrir http://localhost:8080 (ou le port affiché par `serve`).
+Puis ouvrir http://localhost:8080 dans le navigateur. On peut aussi ouvrir `index.html` directement (double-clic), mais certaines animations sont plus fidèles avec un petit serveur local.
 
-## Structure
+## Contenu
 
 ```
-index.html              Contenu de toutes les sections
-assets/css/style.css    Tokens de design, composants, animations, responsive
-assets/js/main.js       Effets au scroll et au survol
-assets/favicon.svg      Logo
+index.html               Page d’accueil (hero, constat, offres, méthode, inclus, comparatif, à propos, FAQ, contact)
+mentions-legales.html    Impressum (obligatoire en Suisse, LCD art. 3 al. 1 let. s)
+confidentialite.html     Déclaration de protection des données (LPD art. 19)
+assets/css/style.css     Système de design et mise en page
+assets/js/main.js        Animations et interactions
+assets/fonts/            Polices hébergées localement (licence SIL OFL)
+assets/img/              Logo et favicon
 ```
 
-## Animations incluses
+## Avant la mise en ligne : à compléter
 
-**Au scroll**
-- Titres qui se révèlent mot par mot, blocs qui apparaissent en cascade
-- Barre de progression de lecture et navigation qui se masque/réapparaît
-- Manifeste dont les mots s’allument au fil du défilement
-- Section « Méthode » : rail de progression + écran collant qui change à chaque étape (audit, arborescence, maquette, tableau de bord)
-- Section « Réalisations » épinglée : le scroll vertical fait défiler les projets horizontalement
-- Compteurs animés, filets qui se tracent, grand logo qui remonte dans le footer
+Les éléments surlignés en rouge (classe `todo`) dans les pages légales doivent être remplis :
 
-**Au survol**
-- Curseur « crochets de précision » qui encadre les éléments cliquables
-- Grille du hero éclairée sous la souris + maquette inclinée en 3D
-- Halo qui suit la souris dans les grilles de cartes, icônes redessinées
-- Boutons magnétiques, reflet sur les boutons principaux, flèches qui s’allongent
-- Liens dont le texte « roule », indicateur glissant dans le menu
-- Mini-sites des projets qui défilent comme une vraie page
+- **Adresse postale** : obligatoire dans l’impressum.
+- **Numéro IDE** (CHE-…) : attribué après l’affiliation AVS comme indépendant (OCAS à Genève).
+- **Hébergeur** : nom, adresse et pays, une fois l’hébergement choisi.
+- **Messagerie** : garantie de transfert vers les États-Unis si l’adresse Gmail est conservée. Une adresse sur votre domaine (offerte avec un .ch chez Infomaniak) simplifie la page de protection des données.
+- **Photo** : remplacer le monogramme « EM » de la section À propos par une photo (`assets/img/elliot.jpg`, voir le commentaire dans `index.html`).
 
-Tout est désactivé proprement si le visiteur a activé « réduire les animations » dans son système, et les effets de souris ne s’activent pas sur écran tactile.
+## Mise en ligne recommandée (plus tard)
 
-## À personnaliser avant la mise en ligne
+- **Nom de domaine** : `etabli.ch` semblait libre le 8 octobre 2026 (à confirmer sur nic.ch). Infomaniak, à Genève, le propose autour de 8.90 CHF/an, avec une adresse e-mail offerte.
+- **Hébergement** : Cloudflare Pages (gratuit, usage commercial autorisé à ce jour) ou l’offre Starter d’Infomaniak (gratuite avec le domaine, très limitée).
+- Vérifier que le nom « Établi » n’est pas déjà utilisé par une entreprise du même secteur : zefix.ch (registre du commerce) et swissreg.ch (marques).
 
-Le contenu signalé par un commentaire HTML (« d’exemple », « fictifs ») dans `index.html` est fictif :
+## Modifier les textes et les prix
 
-- **Nom et coordonnées** : « Lumen », `bonjour@lumen-conseil.fr`, `01 23 45 67 89`
-- **Logos clients, études de cas et témoignages** : noms et résultats d’exemple
-- **Chiffres** : hero, section « En chiffres » et maquettes
-- **Tarifs** : section « Offres »
-- **Liens légaux** : « Mentions légales » et « Confidentialité » pointent vers `#`
-
-### Formulaire de contact
-
-Sans serveur, le formulaire valide les champs puis ouvre la messagerie du visiteur avec la demande pré-remplie (adresse définie par `data-email` sur la balise `<form>`). Pour un envoi direct, branchez un service comme Formspree ou Netlify Forms dans le gestionnaire `submit` de `assets/js/main.js`.
-
-### Couleurs et typographie
-
-Toutes les couleurs sont des variables CSS en haut de `assets/css/style.css` (`--color-indigo-ink`, `--color-midnight-ink`, etc.). La police **Inter Tight** (Google Fonts) remplace sohne-var, qui est payante.
-
-## Déploiement
-
-Le dossier peut être publié tel quel sur GitHub Pages, Netlify, Vercel ou tout hébergement statique. Pour GitHub Pages : *Settings → Pages → Deploy from a branch*, puis choisir la branche et le dossier racine.
+Tout le contenu est dans `index.html`, en clair. Les prix apparaissent dans les cartes d’offres, la section Sérénité, le bandeau de lancement, le comparatif et la FAQ : pensez à les modifier partout.

@@ -191,6 +191,7 @@ button { cursor: pointer; }
 .eyebrow--left { justify-content: flex-start; }
 .eyebrow--left::before { display: none; }
 
+.display, .title { text-wrap: balance; }
 .display {
   font-family: var(--font-display);
   font-weight: 500;
@@ -671,8 +672,8 @@ button { cursor: pointer; }
 /* ---------- Offres ---------- */
 .plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
 .plan { display: flex; flex-direction: column; gap: 22px; padding: 32px 28px 28px; }
-.plan__head { display: grid; gap: 10px; }
-.plan__for { font-size: 14.5px; color: var(--text-mute); min-height: 3.2em; }
+.plan__head { display: grid; justify-items: start; gap: 10px; }
+.plan__for { font-size: 14.5px; color: var(--text-mute); min-height: 4.8em; }
 .plan__price { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px; padding-block: 20px; box-shadow: inset 0 1px 0 var(--line), inset 0 -1px 0 var(--line); }
 .plan__amount { font-family: var(--font-display); font-size: 44px; font-weight: 500; line-height: 1; letter-spacing: -0.03em; color: var(--text-hi); font-variant-numeric: tabular-nums; }
 .plan__unit { font-size: 14px; color: var(--text-mute); }
@@ -712,6 +713,7 @@ button { cursor: pointer; }
 .pricing-notes { margin-top: 24px; text-align: center; font-size: 13.5px; color: var(--text-faint); }
 
 /* ---------- Méthode (frise) ---------- */
+.steps-wrap { position: relative; }
 .steps { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
 .steps__line {
   position: absolute; left: 12.5%; right: 12.5%; top: 26px; height: 1px;
@@ -770,7 +772,7 @@ button { cursor: pointer; }
   font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-faint);
 }
 .about__text { display: grid; gap: 20px; }
-.about__text p { color: var(--text-mute); font-size: 1.0625rem; }
+.about__text > p:not(.eyebrow) { color: var(--text-mute); font-size: 1.0625rem; }
 .about__text p strong { color: var(--text-hi); font-weight: 500; }
 .promises { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px; }
 .promises li { display: flex; gap: 12px; align-items: start; padding: 14px 16px; border-radius: 12px; background: var(--glass); box-shadow: inset 0 0 0 1px var(--line); font-size: 14.5px; color: var(--text); }
@@ -930,7 +932,8 @@ button { cursor: pointer; }
   .about { grid-template-columns: 1fr; gap: 40px; }
   .about__portrait { max-width: 360px; }
   .contact { grid-template-columns: 1fr; }
-  .steps { grid-template-columns: 1fr; gap: 0; max-width: 520px; margin-inline: auto; }
+  .steps-wrap { max-width: 520px; margin-inline: auto; }
+  .steps { grid-template-columns: 1fr; gap: 0; }
   .steps__line { left: 26px; right: auto; top: 26px; bottom: 26px; width: 1px; height: auto; }
   .steps__line i { transform: scaleY(var(--p, 0)); transform-origin: top; background: linear-gradient(180deg, var(--accent-text), #8ea4c6); }
   .step { grid-template-columns: 52px 1fr; justify-items: start; column-gap: 20px; row-gap: 6px; padding-bottom: 36px; text-align: left; }
@@ -962,6 +965,17 @@ button { cursor: pointer; }
   .ui-photo { display: none; }
   .ui-cards span:nth-child(3) { display: none; }
   .ui-cards { grid-template-columns: 1fr 1fr; }
+  .compare table { min-width: 0; }
+  .compare thead { display: none; }
+  .compare table, .compare tbody, .compare tr, .compare th, .compare td { display: block; width: auto; }
+  .compare tbody tr { padding: 20px; box-shadow: inset 0 -1px 0 var(--line); }
+  .compare tbody tr:last-child { box-shadow: none; }
+  .compare tbody th, .compare td { padding: 0; box-shadow: none; }
+  .compare tbody th { margin-bottom: 12px; font-family: var(--font-mono); font-size: 11.5px; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; color: var(--text-faint); }
+  .compare td { display: grid; gap: 2px; padding: 10px 12px; border-radius: 10px; }
+  .compare td + td { margin-top: 6px; }
+  .compare td::before { content: attr(data-label); font-size: 12.5px; font-weight: 500; color: var(--text-faint); }
+  .compare td.is-me::before { color: var(--accent-text); }
   .legal dl { grid-template-columns: 1fr; gap: 4px; }
   .legal dd { margin-bottom: 10px; }
 }

@@ -1,53 +1,60 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr-CH">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lumen — Conseil &amp; création de sites web pour entreprises</title>
-  <meta name="description" content="Lumen, agence de conseil et de création de sites web. Stratégie, design et développement pour les PME, startups et indépendants qui veulent grandir.">
-  <meta name="theme-color" content="#ffffff">
-  <meta property="og:title" content="Lumen — Conseil &amp; création de sites web">
-  <meta property="og:description" content="Stratégie, design et code pour les entreprises qui veulent grandir.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Établi — Sites web pour artisans, commerces et restaurants à Genève</title>
+  <meta name="description" content="Établi crée des sites web clairs, rapides et abordables pour les petites entreprises de Genève. Prix fixes affichés, un seul interlocuteur : Elliot Mooser.">
+  <meta name="theme-color" content="#0e1118">
+  <meta property="og:title" content="Établi — Sites web pour petites entreprises à Genève">
+  <meta property="og:description" content="Des sites clairs, rapides et abordables pour les artisans, commerces et restaurants de Genève.">
   <meta property="og:type" content="website">
-  <meta property="og:locale" content="fr_FR">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;600&amp;display=swap">
+  <meta property="og:locale" content="fr_CH">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/style.css">
   <script>document.documentElement.classList.add('js')</script>
   <script src="assets/js/main.js" defer></script>
 </head>
 <body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="etabli-wood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e4ebf3"/><stop offset="1" stop-color="#9cb1cf"/></linearGradient>
+      <linearGradient id="etabli-pencil" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b3abf5"/><stop offset="1" stop-color="#6658d0"/></linearGradient>
+    </defs>
+  </svg>
   <a class="skip-link" href="#main">Aller au contenu</a>
+  <div class="atmosphere" aria-hidden="true"></div>
 
-  <div class="scroll-progress" aria-hidden="true"><span></span></div>
-  <div class="cursor" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-
-  <!-- ============ NAVIGATION ============ -->
+  <!-- ===================== NAVIGATION ===================== -->
   <header class="nav" data-nav>
     <div class="container nav__inner">
-      <a class="brand" href="#top" aria-label="Lumen — retour en haut">
-        <svg class="brand__mark" viewBox="0 0 28 28" aria-hidden="true">
-          <rect width="28" height="28" rx="5" fill="#533afd"/>
-          <path d="M9 7v14h11" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="square"/>
-          <rect x="16" y="7" width="5" height="5" fill="#b9b9f9"/>
+      <a class="brand" href="#top" aria-label="Établi, retour en haut de page">
+        <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+          <rect x="3" y="16" width="26" height="4.5" rx="1.6" fill="url(#etabli-wood)"/>
+          <rect x="6.5" y="20" width="3.2" height="8" rx="1.1" fill="url(#etabli-wood)"/>
+          <rect x="22.3" y="20" width="3.2" height="8" rx="1.1" fill="url(#etabli-wood)"/>
+          <rect x="14.2" y="3.5" width="4.2" height="10" rx="1.6" fill="url(#etabli-pencil)" transform="rotate(32 16.3 8.5)"/>
         </svg>
-        <span class="brand__name">lumen</span>
+        <span class="brand__name">Établi</span>
       </a>
 
       <nav class="nav__links" aria-label="Navigation principale">
         <span class="nav__indicator" aria-hidden="true"></span>
-        <a href="#services" data-roll>Services</a>
-        <a href="#methode" data-roll>Méthode</a>
-        <a href="#realisations" data-roll>Réalisations</a>
-        <a href="#offres" data-roll>Offres</a>
-        <a href="#faq" data-roll>FAQ</a>
+        <a href="#offres">Offres</a>
+        <a href="#methode">Méthode</a>
+        <a href="#a-propos">À propos</a>
+        <a href="#faq">Questions</a>
       </nav>
 
       <div class="nav__actions">
-        <a class="btn btn--ghost btn--sm" href="mailto:bonjour@lumen-conseil.fr">Nous écrire</a>
-        <a class="btn btn--primary btn--sm" href="#contact" data-magnetic data-arrow>Réserver un appel</a>
+        <a class="nav__phone" href="tel:+41788480878">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+          <span>078 848 08 78</span>
+          <span class="sr-only">Appeler Elliot</span>
+        </a>
+        <a class="btn btn--primary btn--sm" href="#contact">Demander un devis</a>
       </div>
 
       <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Ouvrir le menu">
@@ -57,752 +64,522 @@
 
     <div class="mobile-menu" id="mobile-menu" inert>
       <nav class="container mobile-menu__links" aria-label="Navigation mobile">
-        <a href="#services" style="--i:0">Services</a>
+        <a href="#offres" style="--i:0">Offres</a>
         <a href="#methode" style="--i:1">Méthode</a>
-        <a href="#realisations" style="--i:2">Réalisations</a>
-        <a href="#offres" style="--i:3">Offres</a>
-        <a href="#faq" style="--i:4">FAQ</a>
+        <a href="#a-propos" style="--i:2">À propos</a>
+        <a href="#faq" style="--i:3">Questions</a>
+        <a href="#contact" style="--i:4">Contact</a>
       </nav>
       <div class="container mobile-menu__ctas">
-        <a class="btn btn--primary" href="#contact" data-arrow>Réserver un appel</a>
-        <a class="btn btn--ghost" href="mailto:bonjour@lumen-conseil.fr">Nous écrire</a>
+        <a class="btn btn--primary" href="#contact">Demander un devis gratuit</a>
+        <a class="btn btn--ghost" href="tel:+41788480878">Appeler le 078 848 08 78</a>
       </div>
     </div>
   </header>
 
   <main id="main">
 
-    <!-- ============ HERO ============ -->
+    <!-- ===================== HERO ===================== -->
     <section class="hero" id="top" data-hero>
-      <div class="hero__bg" aria-hidden="true">
-        <div class="hero__aurora"></div>
-        <div class="hero__grid">
-          <div class="hero__grid-accent"></div>
-          <span class="beam" style="--col:2; --dur:7s; --delay:-2s"></span>
-          <span class="beam" style="--col:5; --dur:9s; --delay:-6s"></span>
-          <span class="beam" style="--col:9; --dur:6.5s; --delay:-1s"></span>
-          <span class="beam" style="--col:12; --dur:8s; --delay:-4s"></span>
-          <span class="beam" style="--col:15; --dur:10s; --delay:-8s"></span>
-          <span class="beam" style="--col:18; --dur:7.5s; --delay:-3s"></span>
-          <span class="beam" style="--col:22; --dur:9.5s; --delay:-5s"></span>
-        </div>
-      </div>
-
-      <div class="container hero__inner">
-        <div class="hero__copy">
-          <a class="pill" href="#offres" data-reveal="fade">
-            <span class="pill__tag">Nouveau</span>
-            <span>Audit digital offert pour tout nouveau projet</span>
-            <svg class="pill__chev" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M3 1l4 4-4 4"/></svg>
+      <div class="spotlight" aria-hidden="true"></div>
+      <div class="container hero__copy">
+        <p class="eyebrow" data-reveal>Studio web à Genève</p>
+        <h1 class="display sky hero__title" data-split>Votre entreprise, bien établie sur le web.</h1>
+        <p class="lead hero__lead" data-reveal style="--d:3">Je crée des sites clairs, rapides et abordables pour les artisans, commerces et restaurants de Genève. Dès 490 CHF, textes et mise en ligne compris.</p>
+        <div class="btn-row" data-reveal style="--d:4">
+          <a class="btn btn--primary" href="#contact">
+            Demander un devis gratuit
+            <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
           </a>
-
-          <h1 class="hero__title h-display" data-split>
-            Stratégie, design et code pour les entreprises qui veulent
-            <span class="rotator" data-rotator><span class="sr-only">grandir.</span><span class="rotator__list" aria-hidden="true"><span class="rotator__word is-active">grandir.</span><span class="rotator__word">convaincre.</span><span class="rotator__word">accélérer.</span><span class="rotator__word">se démarquer.</span></span></span>
-          </h1>
-
-          <p class="hero__lead" data-reveal style="--d:4">
-            Lumen accompagne PME, startups et indépendants de l’audit stratégique jusqu’à la mise en ligne. Un seul partenaire pour clarifier votre offre, concevoir votre site et mesurer ce qui compte vraiment.
-          </p>
-
-          <div class="cta-pair" data-reveal style="--d:5">
-            <a class="btn btn--primary" href="#contact" data-magnetic data-arrow>Démarrer un projet</a>
-            <a class="btn btn--ghost" href="#realisations" data-magnetic>
-              <svg class="icon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><rect x="1.75" y="1.75" width="5" height="5" rx="1"/><rect x="9.25" y="1.75" width="5" height="5" rx="1"/><rect x="1.75" y="9.25" width="5" height="5" rx="1"/><rect x="9.25" y="9.25" width="5" height="5" rx="1"/></svg>
-              Voir nos réalisations
-            </a>
-          </div>
-
-          <!-- Chiffres d'exemple : à remplacer par les vôtres -->
-          <ul class="hero__meta" data-reveal style="--d:6">
-            <li><strong><span data-count="120">120</span>+</strong> projets livrés</li>
-            <li><strong><span data-count="4.9">4,9</span>/5</strong> satisfaction client</li>
-            <li><strong>24 h</strong> pour vous répondre</li>
-          </ul>
+          <a class="btn btn--ghost" href="#offres">Voir les tarifs</a>
         </div>
+        <ul class="hero__facts" data-reveal style="--d:5">
+          <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"/></svg>Basé à Genève</li>
+          <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"/></svg>Prix fixes, affichés ici</li>
+          <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"/></svg>Un seul interlocuteur</li>
+        </ul>
+      </div>
 
-        <div class="hero__visual" data-parallax="-0.06">
-          <div class="mock" data-tilt>
-            <div class="mock__browser">
-              <div class="mock__bar">
-                <span class="mock__dots"><i></i><i></i><i></i></span>
-                <span class="mock__url">
-                  <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><rect x="1.5" y="4.5" width="7" height="5" rx="1"/><path d="M3 4.5V3a2 2 0 0 1 4 0v1.5"/></svg>
-                  <span class="mock__url-text" data-type="votre-entreprise.fr"></span><span class="mock__caret"></span>
-                </span>
-                <span class="mock__spacer"></span>
-              </div>
-              <div class="mock__page">
-                <div class="mock__nav"><span class="mock__logo"></span><span class="sk" style="--w:12%"></span><span class="sk" style="--w:10%"></span><span class="sk" style="--w:14%"></span><span class="mock__navbtn"></span></div>
-                <div class="mock__hero">
-                  <span class="sk sk--title" style="--w:86%; --i:0"></span>
-                  <span class="sk sk--title" style="--w:64%; --i:1"></span>
-                  <span class="sk sk--text" style="--w:74%; --i:2"></span>
-                  <span class="sk sk--text" style="--w:52%; --i:3"></span>
-                  <span class="mock__cta">Demander un devis<span class="mock__pointer"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 2l11 6.2-4.7 1.3L7 14z"/></svg></span></span>
-                </div>
-                <div class="mock__cards">
-                  <span class="mock__card" style="--i:0"><i></i><b></b><b></b></span>
-                  <span class="mock__card" style="--i:1"><i></i><b></b><b></b></span>
-                  <span class="mock__card" style="--i:2"><i></i><b></b><b></b></span>
-                </div>
+      <div class="container">
+        <div class="showcase" aria-hidden="true">
+          <div class="showcase__stage" data-tilt>
+            <div class="panel panel--phone">
+              <div class="phone-notch"></div>
+              <div class="phone-body">
+                <h4>Votre commerce</h4>
+                <p>Ouvert aujourd’hui jusqu’à 19 h</p>
+                <div class="phone-photo"></div>
+                <span class="ui-btn ui-btn--fill"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Appeler</span>
+                <span class="ui-btn ui-btn--ghost">Itinéraire</span>
               </div>
             </div>
 
-            <div class="mock__float mock__float--toast">
-              <span class="toast__icon"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7.5l2.5 2.5L11 4.5"/></svg></span>
-              <span><strong>Site mis en ligne</strong><small>il y a 2 min · 0 erreur</small></span>
-            </div>
-
-            <div class="mock__float mock__float--score">
-              <span class="mf__label">Audit de performance</span>
-              <ul class="mf__bars">
-                <li style="--v:.98; --i:0"><span>Performance</span><b><i></i></b><em>98</em></li>
-                <li style="--v:1; --i:1"><span>Accessibilité</span><b><i></i></b><em>100</em></li>
-                <li style="--v:1; --i:2"><span>SEO</span><b><i></i></b><em>100</em></li>
-                <li style="--v:.96; --i:3"><span>Bonnes pratiques</span><b><i></i></b><em>96</em></li>
-              </ul>
-            </div>
-
-            <div class="mock__float mock__float--kpi">
-              <span class="mf__label">Conversions · 90 jours</span>
-              <span class="mf__value">+<span data-count="38" data-delay="1400">38</span>&nbsp;%</span>
-              <svg class="spark" viewBox="0 0 160 48" aria-hidden="true">
-                <path class="spark__area" d="M0 40 L20 36 L40 38 L60 28 L80 30 L100 20 L120 22 L140 10 L160 6 L160 48 L0 48Z"/>
-                <path class="spark__line" pathLength="1" d="M0 40 L20 36 L40 38 L60 28 L80 30 L100 20 L120 22 L140 10 L160 6"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ CLIENTS ============ -->
-    <!-- Noms fictifs : remplacez-les par les logos de vos clients -->
-    <section class="clients" aria-label="Ils nous font confiance">
-      <div class="container clients__inner">
-        <p class="clients__label" data-reveal>Ils nous ont confié<br>leur croissance</p>
-        <div class="marquee" data-marquee data-reveal="fade">
-          <div class="marquee__track">
-            <div class="marquee__group">
-              <span class="client"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 17V8l7-5 7 5v9"/><path d="M8 17v-5h4v5"/></svg>Maison Verdier</span>
-              <span class="client client--caps">Arpège</span>
-              <span class="client"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="M6 10h8"/></svg>nova·mobilité</span>
-              <span class="client client--serif">Helio Énergie</span>
-              <span class="client client--mono">KÔNE/studio</span>
-              <span class="client client--caps">Bastide &amp; Fils</span>
-              <span class="client"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 16L10 4l6 12"/><path d="M6.5 11h7"/></svg>Optima RH</span>
-              <span class="client client--serif client--italic">Les Ateliers du Goût</span>
-              <span class="client"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 13a8 8 0 0 1 16 0"/><path d="M2 16h16"/></svg>Ciel Ouvert</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ SERVICES ============ -->
-    <section class="section" id="services">
-      <div class="container">
-        <header class="section-head">
-          <span class="label" data-reveal>Services</span>
-          <h2 class="h-lg" data-split>Deux métiers, une seule obsession&nbsp;: vos résultats.</h2>
-          <p class="lead" data-reveal style="--d:3">Consultants et créateurs de sites travaillent dans la même équipe. Vos décisions stratégiques se traduisent directement dans votre présence en ligne — sans perte en route.</p>
-        </header>
-
-        <div class="services" data-glow data-stagger data-reveal>
-          <article class="card">
-            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle pathLength="1" cx="12" cy="12" r="9"/><circle pathLength="1" cx="12" cy="12" r="4.5"/><path pathLength="1" d="M12 2v5M12 17v5M2 12h5M17 12h5"/></svg></div>
-            <span class="tag">Conseil</span>
-            <h3 class="card__title">Stratégie &amp; positionnement</h3>
-            <p class="card__text">Clarifier votre offre, vos cibles et votre message. Nous construisons avec vous un positionnement qui vous distingue durablement.</p>
-            <a class="link" href="#contact" data-arrow>En parler</a>
-          </article>
-
-          <article class="card">
-            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="M6 2.75h8.5l4 4v14.5H6z"/><path pathLength="1" d="M14.5 2.75v4h4"/><path pathLength="1" d="M9 13l2 2 4-4.5"/><path pathLength="1" d="M9 18h6"/></svg></div>
-            <span class="tag">Conseil</span>
-            <h3 class="card__title">Audit digital</h3>
-            <p class="card__text">Performance, référencement, accessibilité, parcours de conversion&nbsp;: un diagnostic chiffré et une feuille de route priorisée.</p>
-            <a class="link" href="#offres" data-arrow>Voir l’offre</a>
-          </article>
-
-          <article class="card">
-            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="M3 7.5l9-4.5 9 4.5-9 4.5z"/><path pathLength="1" d="M3 12l9 4.5 9-4.5"/><path pathLength="1" d="M3 16.5L12 21l9-4.5"/></svg></div>
-            <span class="tag">Création</span>
-            <h3 class="card__title">Design UX/UI</h3>
-            <p class="card__text">Parcours, maquettes et design system sur-mesure. Des interfaces testées auprès de vos utilisateurs avant la moindre ligne de code.</p>
-            <a class="link" href="#methode" data-arrow>Notre méthode</a>
-          </article>
-
-          <article class="card">
-            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="M8 7l-5 5 5 5"/><path pathLength="1" d="M16 7l5 5-5 5"/><path pathLength="1" d="M13.5 4l-3 16"/></svg></div>
-            <span class="tag">Création</span>
-            <h3 class="card__title">Développement web</h3>
-            <p class="card__text">Sites vitrines, e-commerce et applications métiers. Rapides, sécurisés, accessibles et simples à faire évoluer.</p>
-            <a class="link" href="#realisations" data-arrow>Nos réalisations</a>
-          </article>
-
-          <article class="card">
-            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle pathLength="1" cx="10.5" cy="10.5" r="6.75"/><path pathLength="1" d="M20.5 20.5l-5-5"/><path pathLength="1" d="M7.5 10.5h6"/></svg></div>
-            <span class="tag">Visibilité</span>
-            <h3 class="card__title">SEO &amp; contenus</h3>
-            <p class="card__text">Référencement naturel et local, rédaction web, stratégie éditoriale. Être trouvé par les bons clients, au bon moment.</p>
-            <a class="link" href="#contact" data-arrow>En parler</a>
-          </article>
-
-          <article class="card">
-            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="M3 20.25h18"/><path pathLength="1" d="M4.5 16l5-5 4 3 6.5-7"/><path pathLength="1" d="M15 7h5v5"/></svg></div>
-            <span class="tag">Croissance</span>
-            <h3 class="card__title">Data &amp; optimisation</h3>
-            <p class="card__text">Analytics, A/B tests, automatisation marketing. Chaque mois, des décisions fondées sur vos chiffres réels.</p>
-            <a class="link" href="#offres" data-arrow>Voir l’offre</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ MANIFESTE (texte qui s'allume au scroll) ============ -->
-    <section class="statement" aria-label="Notre conviction">
-      <div class="container">
-        <hr class="rule" data-reveal="line">
-        <p class="statement__text" data-scrub>Un site web n’est pas une plaquette en ligne. C’est <em>votre meilleur commercial</em>, disponible jour et nuit — à condition d’être pensé comme tel, mesuré comme tel et amélioré chaque mois.</p>
-        <hr class="rule" data-reveal="line">
-      </div>
-    </section>
-
-    <!-- ============ MÉTHODE (scroll collant) ============ -->
-    <section class="section method" id="methode">
-      <div class="container">
-        <header class="section-head">
-          <span class="label" data-reveal>Méthode</span>
-          <h2 class="h-lg" data-split>Quatre étapes, zéro zone d’ombre.</h2>
-          <p class="lead" data-reveal style="--d:3">Un processus éprouvé, des livrables concrets à chaque étape et un interlocuteur unique du premier atelier jusqu’au suivi des résultats.</p>
-        </header>
-
-        <div class="method__grid">
-          <div class="method__steps-wrap">
-            <span class="method__rail" aria-hidden="true"><i></i></span>
-            <ol class="method__steps">
-              <li class="step is-active" data-step="0">
-                <span class="step__num">01</span>
-                <span class="step__meta">Semaines 1 à 2</span>
-                <h3 class="step__title">Diagnostic</h3>
-                <p class="step__text">Entretiens avec vos équipes, analyse de vos clients et de vos concurrents, audit technique complet de votre présence actuelle.</p>
-                <ul class="step__list">
-                  <li>Audit performance, SEO &amp; accessibilité</li>
-                  <li>Benchmark concurrentiel</li>
-                  <li>Rapport chiffré et priorisé</li>
-                </ul>
-              </li>
-              <li class="step" data-step="1">
-                <span class="step__num">02</span>
-                <span class="step__meta">Semaine 3</span>
-                <h3 class="step__title">Stratégie</h3>
-                <p class="step__text">Nous définissons votre positionnement, l’architecture du site et les indicateurs qui mesureront le succès du projet.</p>
-                <ul class="step__list">
-                  <li>Positionnement &amp; messages clés</li>
-                  <li>Arborescence et parcours</li>
-                  <li>Objectifs et KPIs partagés</li>
-                </ul>
-              </li>
-              <li class="step" data-step="2">
-                <span class="step__num">03</span>
-                <span class="step__meta">Semaines 4 à 8</span>
-                <h3 class="step__title">Conception &amp; développement</h3>
-                <p class="step__text">Des wireframes au site final, en sprints hebdomadaires. Vous validez chaque étape et suivez l’avancement en temps réel.</p>
-                <ul class="step__list">
-                  <li>Maquettes et prototype cliquable</li>
-                  <li>Développement et intégration CMS</li>
-                  <li>Rédaction et optimisation SEO</li>
-                </ul>
-              </li>
-              <li class="step" data-step="3">
-                <span class="step__num">04</span>
-                <span class="step__meta">Dès la mise en ligne</span>
-                <h3 class="step__title">Lancement &amp; croissance</h3>
-                <p class="step__text">Mise en ligne sans interruption, formation de vos équipes, puis optimisation continue à partir de vos données réelles.</p>
-                <ul class="step__list">
-                  <li>Mise en ligne et formation</li>
-                  <li>Tableau de bord sur-mesure</li>
-                  <li>Tests et améliorations mensuels</li>
-                </ul>
-              </li>
-            </ol>
-          </div>
-
-          <div class="method__stage" aria-hidden="true">
-            <div class="stage">
-              <div class="stage__bar">
-                <span class="mock__dots"><i></i><i></i><i></i></span>
-                <div class="stage__tabs">
-                  <span class="stage__tab is-active">Diagnostic</span>
-                  <span class="stage__tab">Stratégie</span>
-                  <span class="stage__tab">Conception</span>
-                  <span class="stage__tab">Croissance</span>
-                  <span class="stage__tab-ind"></span>
-                </div>
+            <div class="panel panel--site">
+              <div class="ui-bar">
+                <span class="ui-dots"><i></i><i></i><i></i></span>
+                <span class="ui-url"><svg viewBox="0 0 10 10"><rect x="1.5" y="4.5" width="7" height="5" rx="1"/><path d="M3 4.5V3a2 2 0 0 1 4 0v1.5"/></svg>votre-commerce.ch</span>
+                <span class="ui-spacer"></span>
               </div>
-
-              <div class="stage__body">
-                <!-- 1. Audit -->
-                <div class="screen screen--audit is-active">
-                  <div class="scr__head">
-                    <div><span class="scr__eyebrow">Rapport d’audit</span><span class="scr__title">votre-entreprise.fr</span></div>
-                    <span class="scr__badge">12 recommandations</span>
-                  </div>
-                  <ul class="audit">
-                    <li style="--v:.42; --i:0"><span class="audit__k">Vitesse de chargement</span><span class="audit__bar"><i></i></span><span class="audit__v">4,2 s</span></li>
-                    <li style="--v:.35; --i:1"><span class="audit__k">Référencement local</span><span class="audit__bar"><i></i></span><span class="audit__v">35/100</span></li>
-                    <li style="--v:.58; --i:2"><span class="audit__k">Accessibilité</span><span class="audit__bar"><i></i></span><span class="audit__v">58/100</span></li>
-                    <li style="--v:.16; --i:3"><span class="audit__k">Taux de conversion</span><span class="audit__bar"><i></i></span><span class="audit__v">0,8 %</span></li>
-                    <li style="--v:.66; --i:4"><span class="audit__k">Clarté de l’offre</span><span class="audit__bar"><i></i></span><span class="audit__v">66/100</span></li>
-                  </ul>
-                  <div class="scr__note">
-                    <svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 1.75l6.25 11.5H1.75z"/><path d="M8 6.5v3"/><path d="M8 11.25v.01"/></svg>
-                    <span><strong>Priorité n°1</strong> — simplifier le parcours de demande de devis.</span>
-                  </div>
-                </div>
-
-                <!-- 2. Arborescence -->
-                <div class="screen screen--map">
-                  <div class="scr__head">
-                    <div><span class="scr__eyebrow">Architecture</span><span class="scr__title">Arborescence v2</span></div>
-                    <span class="scr__badge">5 parcours clés</span>
-                  </div>
-                  <svg class="sitemap" viewBox="0 0 440 210">
-                    <g class="sm-links">
-                      <path pathLength="1" style="--i:0" d="M220 42V70"/>
-                      <path pathLength="1" style="--i:1" d="M55 95V70H385V95"/>
-                      <path pathLength="1" style="--i:1" d="M165 70V95"/>
-                      <path pathLength="1" style="--i:1" d="M275 70V95"/>
-                      <path pathLength="1" style="--i:2" d="M55 127V170"/>
-                      <path pathLength="1" style="--i:2" d="M55 150H267V170"/>
-                      <path pathLength="1" style="--i:2" d="M161 150V170"/>
-                      <path pathLength="1" style="--i:2" d="M385 127V170"/>
-                    </g>
-                    <g class="sm-node sm-node--root" style="--i:0"><rect x="170" y="10" width="100" height="32" rx="4"/><text x="220" y="30">Accueil</text></g>
-                    <g class="sm-node" style="--i:1"><rect x="10" y="95" width="90" height="32" rx="4"/><text x="55" y="115">Services</text></g>
-                    <g class="sm-node" style="--i:2"><rect x="120" y="95" width="90" height="32" rx="4"/><text x="165" y="115">Réalisations</text></g>
-                    <g class="sm-node" style="--i:3"><rect x="230" y="95" width="90" height="32" rx="4"/><text x="275" y="115">À propos</text></g>
-                    <g class="sm-node" style="--i:4"><rect x="340" y="95" width="90" height="32" rx="4"/><text x="385" y="115">Contact</text></g>
-                    <g class="sm-node sm-node--leaf" style="--i:5"><rect x="7" y="170" width="96" height="28" rx="4"/><text x="55" y="188">Conseil</text></g>
-                    <g class="sm-node sm-node--leaf" style="--i:6"><rect x="113" y="170" width="96" height="28" rx="4"/><text x="161" y="188">Création web</text></g>
-                    <g class="sm-node sm-node--leaf" style="--i:7"><rect x="219" y="170" width="96" height="28" rx="4"/><text x="267" y="188">SEO</text></g>
-                    <g class="sm-node sm-node--goal" style="--i:8"><rect x="330" y="170" width="110" height="28" rx="4"/><text x="385" y="188">Réserver un appel</text></g>
-                  </svg>
-                </div>
-
-                <!-- 3. Maquette -->
-                <div class="screen screen--design">
-                  <div class="scr__head">
-                    <div><span class="scr__eyebrow">Maquette</span><span class="scr__title">Page d’accueil</span></div>
-                    <span class="scr__badge">Wireframe → UI</span>
-                  </div>
-                  <div class="wire">
-                    <div class="wire__nav"><b></b><span></span><span></span><span></span><em></em></div>
-                    <div class="wire__hero">
-                      <div class="wire__copy"><span class="w1"></span><span class="w2"></span><span class="w3"></span><span class="wbtn"></span></div>
-                      <div class="wire__img"></div>
+              <div class="ui-page">
+                <div class="ui-nav"><span class="ui-logo"><i></i>Votre commerce</span><span>Services</span><span>Horaires</span><span>Contact</span></div>
+                <div class="ui-hero">
+                  <div>
+                    <h4>Le savoir-faire de votre quartier, enfin visible en ligne.</h4>
+                    <p>Horaires, services, photos et accès : tout ce que vos clients cherchent, au même endroit.</p>
+                    <div class="ui-actions">
+                      <span class="ui-btn ui-btn--fill"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Appeler</span>
+                      <span class="ui-btn ui-btn--ghost">Réserver</span>
                     </div>
-                    <div class="wire__cards"><span></span><span></span><span></span></div>
                   </div>
-                  <div class="palette">
-                    <span style="--c:#533afd; --i:0"></span>
-                    <span style="--c:#7389ff; --i:1"></span>
-                    <span style="--c:#b9b9f9; --i:2"></span>
-                    <span style="--c:#e8e9ff; --i:3"></span>
-                    <span style="--c:#061b31; --i:4"></span>
-                    <span class="palette__type">Aa <small>Inter Tight 300</small></span>
-                  </div>
+                  <div class="ui-photo"></div>
                 </div>
+                <div class="ui-cards">
+                  <span><b>Horaires</b>Mar–Sam, 8 h–19 h</span>
+                  <span><b>Adresse</b>Genève</span>
+                  <span><b>Contact</b>Réponse rapide</span>
+                </div>
+              </div>
+            </div>
 
-                <!-- 4. Croissance -->
-                <div class="screen screen--growth">
-                  <div class="scr__head">
-                    <div><span class="scr__eyebrow">Tableau de bord</span><span class="scr__title">6 derniers mois</span></div>
-                    <span class="scr__badge scr__badge--live"><i></i>En direct</span>
-                  </div>
-                  <div class="kpis">
-                    <div class="kpi"><span>Visites</span><strong>+<span data-screen-count="164">164</span>&nbsp;%</strong></div>
-                    <div class="kpi"><span>Leads / mois</span><strong><span data-screen-count="48">48</span></strong></div>
-                    <div class="kpi"><span>Coût par lead</span><strong>−<span data-screen-count="31">31</span>&nbsp;%</strong></div>
-                  </div>
-                  <svg class="chart" viewBox="0 0 440 140">
-                    <g class="chart__grid"><path d="M0 16.5H440M0 51.1H440M0 85.6H440M0 120.2H440"/></g>
-                    <path class="chart__area" d="M0 123.5 L40 116.9 L80 120.2 L120 105.4 L160 98.8 L200 102.1 L240 82.4 L280 72.5 L320 75.8 L360 49.4 L400 36.2 L440 18.1 L440 140 L0 140Z"/>
-                    <path class="chart__line" pathLength="1" d="M0 123.5 L40 116.9 L80 120.2 L120 105.4 L160 98.8 L200 102.1 L240 82.4 L280 72.5 L320 75.8 L360 49.4 L400 36.2 L440 18.1"/>
-                    <circle class="chart__dot" cx="436" cy="20" r="4"/>
-                  </svg>
+            <div class="panel panel--maps">
+              <div class="maps-top"><span class="maps-pin"></span></div>
+              <div class="maps-body">
+                <h4>Votre commerce</h4>
+                <p>Commerce de proximité · Genève</p>
+                <p><span class="maps-open">Ouvert</span> · Ferme à 19:00</p>
+                <div class="maps-actions">
+                  <span><svg viewBox="0 0 24 24"><path d="M12 3l8 18-8-4-8 4z"/></svg>Itinéraire</span>
+                  <span><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Appeler</span>
+                  <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>Site web</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <p class="showcase__caption" aria-hidden="true">Illustration : le site, sa version mobile et la fiche Google</p>
+      </div>
+      <div class="hero__fade" aria-hidden="true"></div>
+    </section>
+
+    <!-- ===================== CONSTAT ===================== -->
+    <section class="section" id="constat" aria-labelledby="constat-titre">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow" data-reveal>Le constat</p>
+          <h2 class="title sky" id="constat-titre" data-split>Vos clients vous cherchent d’abord sur leur téléphone.</h2>
+          <p class="lead" data-reveal style="--d:3">Avant de pousser votre porte, ils vérifient vos horaires, votre adresse et votre sérieux. Si rien ne s’affiche, ils choisissent quelqu’un d’autre.</p>
+        </header>
+
+        <div class="problems" data-stagger>
+          <article class="card problem" data-reveal>
+            <span class="problem__num">01</span>
+            <h3 class="subtitle">Pas de site</h3>
+            <p>Ceux qui ne vous connaissent pas encore ne peuvent pas vous trouver. Le bouche-à-oreille a ses limites.</p>
+          </article>
+          <article class="card problem" data-reveal>
+            <span class="problem__num">02</span>
+            <h3 class="subtitle">Un site daté ou incomplet</h3>
+            <p>Horaires faux, pas de bouton pour appeler, illisible sur mobile : le visiteur repart sans vous contacter.</p>
+          </article>
+          <article class="card problem" data-reveal>
+            <span class="problem__num">03</span>
+            <h3 class="subtitle">Pas le temps de s’en occuper</h3>
+            <p>C’est normal : votre métier, c’est autre chose. Il vous faut quelqu’un qui s’en charge de A à Z.</p>
+          </article>
+        </div>
+
+        <div class="card solution" data-reveal>
+          <p><strong>Je m’occupe de tout</strong> : les textes, le design, la mise en ligne et votre fiche Google. Vous validez chaque étape, je réalise.</p>
+          <a class="link" href="#methode">Voir comment ça se passe <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        </div>
       </div>
     </section>
 
-    <!-- ============ RÉALISATIONS (scroll horizontal) ============ -->
-    <!-- Études de cas d'exemple : remplacez-les par vos projets réels -->
-    <section class="work" id="realisations">
-      <div class="work__pin" data-hscroll>
-        <div class="work__sticky">
-          <div class="container work__head">
-            <div class="section-head section-head--tight">
-              <span class="label" data-reveal>Réalisations</span>
-              <h2 class="h-lg" data-split>Des projets, et surtout des résultats.</h2>
+    <!-- ===================== OFFRES ===================== -->
+    <section class="section section--band" id="offres" aria-labelledby="offres-titre">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow" data-reveal>Offres &amp; tarifs</p>
+          <h2 class="title sky" id="offres-titre" data-split>Des prix clairs, fixés d’avance.</h2>
+          <p class="lead" data-reveal style="--d:3">La création se paie une seule fois, avec le domaine .ch et l’hébergement compris la première année. Aucun abonnement imposé.</p>
+        </header>
+        <div class="plans" data-stagger>
+          <article class="card card--interactive plan" data-reveal>
+            <div class="plan__head">
+              <span class="chip">Pour démarrer</span>
+              <h3 class="subtitle">Essentiel</h3>
+              <p class="plan__for">Une page complète pour être trouvé et facile à contacter. Idéal si vous n’avez pas encore de site.</p>
             </div>
-            <div class="work__counter" aria-hidden="true">
-              <span class="work__index">01</span><span class="work__total">/ 05</span>
-              <span class="work__bar"><i></i></span>
+            <p class="plan__price"><span class="plan__amount">490</span><span class="plan__unit">CHF · paiement unique</span></p>
+            <ul class="plan__list">
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>Une page : prestations, à propos, horaires, accès, contact</span></li>
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>Textes rédigés pour vous, validés par vous</span></li>
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>Pensée pour le téléphone, avec boutons appel, WhatsApp et itinéraire</span></li>
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>Bases du référencement local sur Google</span></li>
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>Mentions légales et protection des données</span></li>
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>Domaine .ch à votre nom, hébergement inclus 12 mois</span></li>
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>2 tours de corrections, 30 jours de retouches</span></li>
+            </ul>
+            <div class="plan__meta"><span class="chip">Maquette en 48 à 72 h</span><span class="chip">En ligne en 5 à 7 jours*</span></div>
+            <a class="btn btn--ghost btn--block" href="#contact">Choisir Essentiel <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          </article>
+          <article class="card card--interactive plan plan--featured" data-reveal>
+            <span class="chip chip--accent plan__badge">Recommandé</span>
+            <div class="plan__head">
+              <span class="chip">Le plus complet</span>
+              <h3 class="subtitle">Vitrine</h3>
+              <p class="plan__for">Plusieurs pages pour présenter vos services, votre carte ou vos réalisations, ou pour refaire un site vieillissant.</p>
             </div>
+            <p class="plan__price"><span class="plan__amount">890</span><span class="plan__unit">CHF · paiement unique</span></p>
+            <ul class="plan__list">
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>Tout l’Essentiel, sur 3 à 5 pages</span></li>
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>Textes pensés pour les recherches locales (métier + quartier)</span></li>
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>Fiche Google incluse (offre Visibilité, valeur 190 CHF)</span></li>
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>Statistiques de visite, sans cookie</span></li>
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>Refonte d’un site existant au même prix</span></li>
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>3 tours de corrections et 30 min de prise en main</span></li>
+            </ul>
+            <div class="plan__meta"><span class="chip">En ligne en 2 à 3 semaines*</span></div>
+            <a class="btn btn--primary btn--block" href="#contact">Choisir Vitrine <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          </article>
+          <article class="card card--interactive plan" data-reveal>
+            <div class="plan__head">
+              <span class="chip">Déjà un site ?</span>
+              <h3 class="subtitle">Visibilité Google</h3>
+              <p class="plan__for">Pour apparaître correctement sur Google Maps, avec ou sans site.</p>
+            </div>
+            <p class="plan__price"><span class="plan__amount">190</span><span class="plan__unit">CHF · paiement unique</span></p>
+            <ul class="plan__list">
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>Création ou reprise de votre fiche Google</span></li>
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>Horaires, services, photos et description soignés</span></li>
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>QR code à imprimer pour demander un avis</span></li>
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>Coordonnées identiques sur les annuaires suisses</span></li>
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>Mini-audit écrit et plan de 5 actions</span></li>
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>1 h de conseil, à Genève ou en visio</span></li>
+            </ul>
+            <div class="plan__meta"><span class="chip">Prête en 3 à 5 jours ouvrables</span></div>
+            <a class="btn btn--ghost btn--block" href="#contact">Choisir Visibilité <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          </article>
+        </div>
+
+        <div class="card subscription" data-reveal>
+          <div class="plan__head">
+            <span class="chip">Facultatif · sans engagement</span>
+            <h3 class="subtitle">Sérénité : je m’occupe du site après la mise en ligne</h3>
+            <div class="subscription__price"><span class="plan__amount">19</span><span class="plan__unit">CHF / mois, soit 228 CHF par an ou 57 CHF par trimestre</span></div>
           </div>
+          <ul>
+            <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>Renouvellement du domaine</span></li>
+            <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>Hébergement, HTTPS et surveillance</span></li>
+            <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>30 min de modifications par mois</span></li>
+            <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>Mises à jour de la fiche Google</span></li>
+            <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>Support par e-mail ou WhatsApp</span></li>
+            <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>Vous arrêtez quand vous voulez, vous gardez tout</span></li>
+          </ul>
+          <a class="link" href="#contact">En savoir plus <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        </div>
 
-          <div class="work__viewport">
-            <div class="work__track">
-              <article class="project" data-reveal>
-                <div class="project__visual project__visual--mist">
-                  <div class="mini">
-                    <div class="mini__bar"><i></i><i></i><i></i></div>
-                    <div class="mini__viewport"><div class="mini__page">
-                      <div class="mini__nav"><b></b><span></span><span></span><span></span></div>
-                      <div class="mini__hero"><div><span class="t1"></span><span class="t2"></span><span class="p"></span><span class="cta"></span></div><div class="img"></div></div>
-                      <div class="mini__row"><span></span><span></span><span></span></div>
-                      <div class="mini__band"></div>
-                      <div class="mini__row mini__row--2"><span></span><span></span></div>
-                      <div class="mini__footer"></div>
-                    </div></div>
-                  </div>
-                </div>
-                <div class="project__body">
-                  <div class="project__meta"><span class="tag">Refonte &amp; SEO local</span><span>Menuiserie · Lyon</span></div>
-                  <h3 class="project__title">Maison Verdier</h3>
-                  <p class="project__result"><strong>+212&nbsp;%</strong> de demandes de devis en six mois</p>
-                  <a class="link" href="#contact" data-arrow>Voir l’étude de cas</a>
-                </div>
-              </article>
+        <div class="launch" data-reveal>
+          <span class="chip chip--accent">Tarif de lancement · 5 places</span>
+          <p><strong>Jusqu’au 31 janvier 2027 : Essentiel à 390 CHF, Vitrine à 690 CHF.</strong> En échange, vous m’autorisez à présenter votre site comme référence et vous me donnez un retour honnête, publié seulement avec votre accord.</p>
+          <a class="btn btn--primary btn--sm" href="#contact">Réserver une place <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        </div>
 
-              <article class="project" data-reveal>
-                <div class="project__visual project__visual--wash">
-                  <div class="mini mini--center">
-                    <div class="mini__bar"><i></i><i></i><i></i></div>
-                    <div class="mini__viewport"><div class="mini__page">
-                      <div class="mini__nav"><b></b><span></span><span></span><span></span></div>
-                      <div class="mini__hero"><div><span class="t1"></span><span class="t2"></span><span class="p"></span><span class="cta"></span></div><div class="img"></div></div>
-                      <div class="mini__row"><span></span><span></span><span></span></div>
-                      <div class="mini__band"></div>
-                      <div class="mini__row mini__row--2"><span></span><span></span></div>
-                      <div class="mini__footer"></div>
-                    </div></div>
-                  </div>
-                </div>
-                <div class="project__body">
-                  <div class="project__meta"><span class="tag">Stratégie &amp; site vitrine</span><span>Expertise comptable</span></div>
-                  <h3 class="project__title">Cabinet Arpège</h3>
-                  <p class="project__result"><strong>×3</strong> rendez-vous qualifiés chaque mois</p>
-                  <a class="link" href="#contact" data-arrow>Voir l’étude de cas</a>
-                </div>
-              </article>
+        <p class="pricing-notes" data-reveal>* Délais comptés dès réception de vos contenus (informations, logo, photos). Page supplémentaire : 120 CHF. Retouches hors abonnement : 60 CHF/h, par tranches de 15 min.<br>Acompte de 30 % à la commande, solde à la validation finale. Prix en CHF, sans TVA (non assujetti).</p>
+      </div>
+    </section>
 
-              <article class="project" data-reveal>
-                <div class="project__visual project__visual--night">
-                  <div class="mini mini--dark">
-                    <div class="mini__bar"><i></i><i></i><i></i></div>
-                    <div class="mini__viewport"><div class="mini__page">
-                      <div class="mini__nav"><b></b><span></span><span></span><span></span></div>
-                      <div class="mini__hero"><div><span class="t1"></span><span class="t2"></span><span class="p"></span><span class="cta"></span></div><div class="img"></div></div>
-                      <div class="mini__row"><span></span><span></span><span></span></div>
-                      <div class="mini__band"></div>
-                      <div class="mini__row mini__row--2"><span></span><span></span></div>
-                      <div class="mini__footer"></div>
-                    </div></div>
-                  </div>
-                </div>
-                <div class="project__body">
-                  <div class="project__meta"><span class="tag">Positionnement &amp; landing pages</span><span>Startup SaaS</span></div>
-                  <h3 class="project__title">Nova Mobilité</h3>
-                  <p class="project__result"><strong>−41&nbsp;%</strong> de coût par lead en un trimestre</p>
-                  <a class="link" href="#contact" data-arrow>Voir l’étude de cas</a>
-                </div>
-              </article>
+    <!-- ===================== MÉTHODE ===================== -->
+    <section class="section" id="methode" aria-labelledby="methode-titre">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow" data-reveal>Méthode</p>
+          <h2 class="title sky" id="methode-titre" data-split>Quatre étapes, aucune mauvaise surprise.</h2>
+          <p class="lead" data-reveal style="--d:3">Vous savez toujours où en est votre site, ce qu’il reste à faire et ce que ça coûte.</p>
+        </header>
+        <div class="steps-wrap" data-steps>
+        <span class="steps__line" aria-hidden="true"><i></i></span>
+        <ol class="steps" data-stagger>
+          <li class="step" data-reveal>
+            <span class="icon-tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span>
+            <span class="step__when">Gratuit</span>
+            <h3 class="subtitle">On fait connaissance</h3>
+            <p>Par téléphone, en visio ou autour d’un café à Genève : votre activité, vos clients, ce que le site doit faire pour vous.</p>
+          </li>
+          <li class="step" data-reveal>
+            <span class="icon-tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M10 12h5M10 16h5"/></svg></span>
+            <span class="step__when">Devis écrit</span>
+            <h3 class="subtitle">Un devis clair</h3>
+            <p>Vous recevez un devis et un contrat d’une page : contenu, délais, corrections, prix. Un acompte de 30 % lance le projet.</p>
+          </li>
+          <li class="step" data-reveal>
+            <span class="icon-tile"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18"/><path d="M8 21h8"/><path d="M8 12h4M8 15h7"/></svg></span>
+            <span class="step__when">Maquette en 48 à 72 h</span>
+            <h3 class="subtitle">Je crée, vous validez</h3>
+            <p>Je rédige les textes et je construis le site. Vous le découvrez, je corrige jusqu’à ce qu’il vous ressemble.</p>
+          </li>
+          <li class="step" data-reveal>
+            <span class="icon-tile"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span>
+            <span class="step__when">30 jours de retouches</span>
+            <h3 class="subtitle">En ligne, à votre nom</h3>
+            <p>Le site est publié sur votre domaine et relié à votre fiche Google. Le solde se paie à ce moment-là, pas avant.</p>
+          </li>
+        </ol>
+        </div>
+      </div>
+    </section>
 
-              <article class="project" data-reveal>
-                <div class="project__visual project__visual--frost">
-                  <div class="mini mini--shop">
-                    <div class="mini__bar"><i></i><i></i><i></i></div>
-                    <div class="mini__viewport"><div class="mini__page">
-                      <div class="mini__nav"><b></b><span></span><span></span><span></span></div>
-                      <div class="mini__hero"><div><span class="t1"></span><span class="t2"></span><span class="p"></span><span class="cta"></span></div><div class="img"></div></div>
-                      <div class="mini__row"><span></span><span></span><span></span><span></span></div>
-                      <div class="mini__band"></div>
-                      <div class="mini__row"><span></span><span></span><span></span><span></span></div>
-                      <div class="mini__footer"></div>
-                    </div></div>
-                  </div>
-                </div>
-                <div class="project__body">
-                  <div class="project__meta"><span class="tag">E-commerce &amp; réservation</span><span>Traiteur · Bordeaux</span></div>
-                  <h3 class="project__title">Les Ateliers du Goût</h3>
-                  <p class="project__result"><strong>1&nbsp;800</strong> commandes en ligne par mois</p>
-                  <a class="link" href="#contact" data-arrow>Voir l’étude de cas</a>
-                </div>
-              </article>
+    <!-- ===================== INCLUS ===================== -->
+    <section class="section section--band" id="inclus" aria-labelledby="inclus-titre">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow" data-reveal>Dans chaque site</p>
+          <h2 class="title sky" id="inclus-titre" data-split>L’essentiel, bien fait.</h2>
+          <p class="lead" data-reveal style="--d:3">Pas d’options gadgets : uniquement ce qui aide un client à vous trouver, à vous faire confiance et à vous contacter.</p>
+        </header>
+        <div class="included" data-stagger>
+          <article class="card feature" data-reveal>
+            <span class="icon-tile"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></span>
+            <h3 class="subtitle">Pensé pour le téléphone</h3>
+            <p>Lisible, rapide et agréable sur mobile, là où vos clients vous cherchent en premier.</p>
+          </article>
+          <article class="card feature" data-reveal>
+            <span class="icon-tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span>
+            <h3 class="subtitle">Un geste pour vous joindre</h3>
+            <p>Appeler, écrire, venir : des boutons bien visibles mènent directement au téléphone, à WhatsApp ou à l’itinéraire.</p>
+          </article>
+          <article class="card feature" data-reveal>
+            <span class="icon-tile"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.3-4.3"/></svg></span>
+            <h3 class="subtitle">Trouvable sur Google</h3>
+            <p>Titres, descriptions, adresse et informations pratiques structurés pour les recherches locales.</p>
+          </article>
+          <article class="card feature" data-reveal>
+            <span class="icon-tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg></span>
+            <h3 class="subtitle">Des textes écrits pour vous</h3>
+            <p>Je les rédige à partir de nos échanges, avec l’aide de l’IA. Vous les relisez et rien n’est publié sans votre accord.</p>
+          </article>
+          <article class="card feature" data-reveal>
+            <span class="icon-tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7.5 3v5.5c0 4.5-3.2 8.2-7.5 9.5-4.3-1.3-7.5-5-7.5-9.5V6z"/><path d="M8.8 12l2.2 2.2 4.2-4.4"/></svg></span>
+            <h3 class="subtitle">En règle avec le droit suisse</h3>
+            <p>Mentions légales et page de protection des données (nLPD) incluses, polices hébergées sur le site, connexion chiffrée.</p>
+          </article>
+          <article class="card feature" data-reveal>
+            <span class="icon-tile"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="14" r="4"/><path d="M11 11l9-9M16 6l3 3M14 8l2 2"/></svg></span>
+            <h3 class="subtitle">Tout vous appartient</h3>
+            <p>Domaine .ch à votre nom, accès remis à la livraison. Si vous partez, vous emportez votre site.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-              <article class="project" data-reveal>
-                <div class="project__visual project__visual--indigo">
-                  <div class="mini">
-                    <div class="mini__bar"><i></i><i></i><i></i></div>
-                    <div class="mini__viewport"><div class="mini__page">
-                      <div class="mini__nav"><b></b><span></span><span></span><span></span></div>
-                      <div class="mini__hero"><div><span class="t1"></span><span class="t2"></span><span class="p"></span><span class="cta"></span></div><div class="img"></div></div>
-                      <div class="mini__row"><span></span><span></span><span></span></div>
-                      <div class="mini__band"></div>
-                      <div class="mini__row mini__row--2"><span></span><span></span></div>
-                      <div class="mini__footer"></div>
-                    </div></div>
-                  </div>
-                </div>
-                <div class="project__body">
-                  <div class="project__meta"><span class="tag">Audit &amp; refonte complète</span><span>Énergie solaire</span></div>
-                  <h3 class="project__title">Helio Énergie</h3>
-                  <p class="project__result"><strong>98/100</strong> en performance, contre 41 avant</p>
-                  <a class="link" href="#contact" data-arrow>Voir l’étude de cas</a>
-                </div>
-              </article>
+    <!-- ===================== COMPARATIF ===================== -->
+    <section class="section" id="comparatif" aria-labelledby="comparatif-titre">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow" data-reveal>Comparer</p>
+          <h2 class="title sky" id="comparatif-titre" data-split>Entre le « fait maison » et l’agence.</h2>
+          <p class="lead" data-reveal style="--d:3">Trois façons d’avoir un site. Voici ce qui change vraiment pour vous.</p>
+        </header>
+        <div class="card compare" data-reveal>
+          <div class="compare__scroll">
+            <table>
+              <caption class="sr-only">Comparaison entre un site fait soi-même, un prestataire classique et Établi</caption>
+              <thead>
+                <tr>
+                  <td></td>
+                  <th scope="col">Le faire soi-même<small>Wix, Jimdo, Squarespace…</small></th>
+                  <th scope="col">Prestataire classique<small>Agences et freelances de la région</small></th>
+                  <th scope="col" class="is-me">Établi<small>Elliot Mooser, Genève</small></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Pour démarrer</th>
+                  <td data-label="Le faire soi-même">Environ 150 CHF par an d’abonnement, aussi longtemps que le site existe</td>
+                  <td data-label="Prestataire classique">Environ 990 à 1 490 CHF pour un premier site</td>
+                  <td class="is-me" data-label="Établi">490 ou 890 CHF, hébergement et domaine compris la première année</td>
+                </tr>
+                <tr>
+                  <th scope="row">Ensuite</th>
+                  <td data-label="Le faire soi-même">L’abonnement continue</td>
+                  <td data-label="Prestataire classique">Maintenance souvent entre 25 et 90 CHF par mois</td>
+                  <td class="is-me" data-label="Établi">Sérénité à 19 CHF/mois, facultatif, ou seulement le domaine (environ 9 à 15 CHF/an)</td>
+                </tr>
+                <tr>
+                  <th scope="row">Qui fait le travail</th>
+                  <td data-label="Le faire soi-même">Vous, sur votre temps libre</td>
+                  <td data-label="Prestataire classique">Un professionnel, selon son organisation</td>
+                  <td class="is-me" data-label="Établi">Moi, du premier appel à la mise en ligne</td>
+                </tr>
+                <tr>
+                  <th scope="row">Les textes</th>
+                  <td data-label="Le faire soi-même">À écrire vous-même</td>
+                  <td data-label="Prestataire classique">Selon l’offre choisie</td>
+                  <td class="is-me" data-label="Établi">Rédigés pour vous, validés par vous</td>
+                </tr>
+                <tr>
+                  <th scope="row">Si vous partez</th>
+                  <td data-label="Le faire soi-même">Le site reste sur la plateforme</td>
+                  <td data-label="Prestataire classique">Selon le contrat</td>
+                  <td class="is-me" data-label="Établi">Site, textes et domaine vous appartiennent</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <p class="compare__note" data-reveal>Prix d’entrée publiés par des prestataires genevois et romands et par les principales plateformes, relevés en octobre 2026.</p>
+      </div>
+    </section>
 
-              <a class="project project--next" href="#contact" data-reveal>
-                <span class="label">Prochain projet</span>
-                <span class="project--next__title">Le vôtre&nbsp;?</span>
-                <span class="link" data-arrow>Parlons-en</span>
+    <!-- ===================== À PROPOS ===================== -->
+    <section class="section section--band" id="a-propos" aria-labelledby="apropos-titre">
+      <div class="container about">
+        <figure class="card about__portrait" data-reveal>
+          <!-- Remplacer par : <img src="assets/img/elliot.jpg" alt="Elliot Mooser"> -->
+          <span class="about__monogram sky" aria-hidden="true">EM</span>
+          <figcaption><span>Elliot Mooser</span><span>Genève</span></figcaption>
+        </figure>
+        <div class="about__text">
+          <p class="eyebrow eyebrow--left" data-reveal>À propos</p>
+          <h2 class="title sky" id="apropos-titre" data-split>Bonjour, moi c’est Elliot.</h2>
+          <p data-reveal>Je vis à Genève et j’ai créé <strong>Établi</strong> pour une raison simple : les artisans, commerçants et restaurateurs d’ici méritent un site aussi soigné que celui des grandes enseignes, sans le budget d’une agence.</p>
+          <p data-reveal>Je travaille avec l’IA : elle m’aide à structurer, à écrire un premier jet et à coder plus vite. Le reste, je le fais moi-même et avec vous : comprendre votre métier, choisir les bons mots, vérifier chaque détail avant la mise en ligne.</p>
+          <p data-reveal>Établi est une activité toute neuve, et je l’assume. C’est pour ça que mes prix sont publics, que le solde ne se paie qu’à la validation et que tout vous appartient à la fin.</p>
+          <ul class="promises" data-stagger>
+            <li data-reveal><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>Un seul interlocuteur, du premier appel au suivi</span></li>
+            <li data-reveal><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>Des prix annoncés à l’avance, par écrit</span></li>
+            <li data-reveal><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>Le solde se paie à la validation finale</span></li>
+            <li data-reveal><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>Site, textes et domaine à votre nom</span></li>
+          </ul>
+          <div class="btn-row" data-reveal>
+            <a class="btn btn--primary" href="#contact">Parler de mon projet <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FAQ ===================== -->
+    <section class="section" id="faq" aria-labelledby="faq-titre">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow" data-reveal>Questions fréquentes</p>
+          <h2 class="title sky" id="faq-titre" data-split>Ce qu’on me demande souvent.</h2>
+        </header>
+        <div class="faq" data-stagger>
+          <details class="faq__item" data-reveal>
+            <summary>Combien coûte un site, au total ?<span class="faq__icon" aria-hidden="true"></span></summary>
+            <div class="faq__answer">
+              <p>La création se paie une seule fois : 490 CHF pour l’Essentiel (une page), 890 CHF pour la Vitrine (3 à 5 pages, fiche Google comprise). Le domaine .ch et l’hébergement sont inclus pendant 12 mois.</p>
+              <p>Ensuite, vous choisissez : l’abonnement Sérénité à 19 CHF par mois, modifications comprises, ou seulement le renouvellement de votre domaine, environ 9 à 15 CHF par an selon le registraire. Les retouches hors abonnement coûtent 60 CHF de l’heure, par tranches de 15 minutes.</p>
+            </div>
+          </details>
+          <details class="faq__item" data-reveal>
+            <summary>Pourquoi est-ce moins cher qu’une agence ?<span class="faq__icon" aria-hidden="true"></span></summary>
+            <div class="faq__answer">
+              <p>L’IA me fait gagner du temps sur la structure, les premiers jets de textes et le code. Je travaille seul, sans locaux ni équipe commerciale à financer : ce temps et ces frais en moins se retrouvent dans le prix.</p>
+              <p>Ce qui ne change pas : chaque texte et chaque page sont relus, corrigés et validés avec vous avant la mise en ligne.</p>
+            </div>
+          </details>
+          <details class="faq__item" data-reveal>
+            <summary>Combien de temps faut-il ?<span class="faq__icon" aria-hidden="true"></span></summary>
+            <div class="faq__answer">
+              <p>Pour l’Essentiel, vous recevez une maquette en 48 à 72 heures et le site est en ligne en 5 à 7 jours ouvrables. Pour la Vitrine, comptez 2 à 3 semaines. Les délais démarrent à la réception de vos contenus : informations pratiques, logo si vous en avez un, photos.</p>
+              <p>La vérification d’une fiche Google dépend de Google lui-même : je ne peux pas promettre sa durée.</p>
+            </div>
+          </details>
+          <details class="faq__item" data-reveal>
+            <summary>Je n’ai ni textes ni photos. Est-ce un problème ?<span class="faq__icon" aria-hidden="true"></span></summary>
+            <div class="faq__answer">
+              <p>Non. Je rédige les textes à partir de notre échange et d’un court questionnaire. Pour les photos, celles de votre téléphone suffisent souvent : je vous dis lesquelles prendre et je m’occupe de les recadrer.</p>
+            </div>
+          </details>
+          <details class="faq__item" data-reveal>
+            <summary>Le site m’appartient-il vraiment ?<span class="faq__icon" aria-hidden="true"></span></summary>
+            <div class="faq__answer">
+              <p>Oui. Le domaine .ch est enregistré à votre nom, les accès vous sont remis et, une fois le solde payé, le site et ses textes sont à vous. Si vous arrêtez l’abonnement Sérénité, vous gardez tout.</p>
+            </div>
+          </details>
+          <details class="faq__item" data-reveal>
+            <summary>Pourrai-je modifier mon site moi-même ?<span class="faq__icon" aria-hidden="true"></span></summary>
+            <div class="faq__answer">
+              <p>Les sites que je livre sont optimisés pour la vitesse : les modifications passent par moi, 30 minutes par mois avec Sérénité ou à l’heure sinon. Si vous tenez à tout modifier vous-même, dites-le dès le premier échange : je vous proposerai une solution avec un éditeur simple.</p>
+            </div>
+          </details>
+          <details class="faq__item" data-reveal>
+            <summary>Comment se passe le paiement ?<span class="faq__icon" aria-hidden="true"></span></summary>
+            <div class="faq__answer">
+              <p>Un acompte de 30 % à la commande, le solde de 70 % à la validation finale ; le site est mis en ligne dès réception du solde. La Visibilité Google se paie à la livraison. Factures QR, par virement ou TWINT, payables à 10 jours.</p>
+              <p>Les prix sont en francs suisses, sans TVA : je ne suis pas assujetti.</p>
+            </div>
+          </details>
+          <details class="faq__item" data-reveal>
+            <summary>Travaillez-vous en dehors de Genève ?<span class="faq__icon" aria-hidden="true"></span></summary>
+            <div class="faq__answer">
+              <p>Je suis basé à Genève. On peut se voir sur place ou tout faire par téléphone et en visio, où que vous soyez en Suisse romande.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section class="section" id="contact" aria-labelledby="contact-titre">
+      <div class="container">
+        <div class="card contact" data-reveal>
+          <div class="contact__glow" aria-hidden="true"></div>
+          <div class="contact__copy">
+            <p class="eyebrow eyebrow--left">Contact</p>
+            <h2 class="title sky" id="contact-titre" data-split>Parlons de votre projet.</h2>
+            <p class="lead">Un premier échange gratuit et sans engagement. Décrivez votre activité en quelques mots : je vous réponds avec une proposition claire et chiffrée.</p>
+            <div class="contact__ways">
+              <a class="way" href="tel:+41788480878">
+                <span class="icon-tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span>
+                <span class="way__text"><span class="way__label">Par téléphone</span><span class="way__value">078 848 08 78</span></span>
+                <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </a>
+              <a class="way" href="mailto:elliotmoosera@gmail.com?subject=Demande%20de%20devis">
+                <span class="icon-tile"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5L12 13l8.5-6.5"/></svg></span>
+                <span class="way__text"><span class="way__label">Par e-mail</span><span class="way__value">elliotmoosera@<wbr>gmail.com</span></span>
+                <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
               </a>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- ============ CHIFFRES ============ -->
-    <!-- Chiffres d'exemple : à remplacer par les vôtres -->
-    <section class="section stats-section">
-      <div class="container">
-        <hr class="rule" data-reveal="line">
-        <header class="section-head">
-          <span class="label" data-reveal>En chiffres</span>
-          <h2 class="h-lg" data-split>Des résultats que vous pouvez mesurer.</h2>
-        </header>
-        <div class="stats" data-stagger>
-          <div class="stat" data-reveal>
-            <span class="stat__value"><span data-count="120">120</span><small>+</small></span>
-            <span class="stat__label">projets accompagnés depuis 2018</span>
-          </div>
-          <div class="stat" data-reveal>
-            <span class="stat__value">+<span data-count="38">38</span><small>%</small></span>
-            <span class="stat__label">de conversions en moyenne après refonte</span>
-          </div>
-          <div class="stat" data-reveal>
-            <span class="stat__value"><span data-count="98">98</span><small>/100</small></span>
-            <span class="stat__label">score de performance moyen livré</span>
-          </div>
-          <div class="stat" data-reveal>
-            <span class="stat__value"><span data-count="4.9">4,9</span><small>/5</small></span>
-            <span class="stat__label">note de satisfaction de nos clients</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ TÉMOIGNAGES ============ -->
-    <!-- Témoignages d'exemple : à remplacer par de vrais avis clients -->
-    <section class="section quotes-section">
-      <div class="container">
-        <header class="section-head">
-          <span class="label" data-reveal>Témoignages</span>
-          <h2 class="h-lg" data-split>Ils en parlent mieux que nous.</h2>
-        </header>
-        <div class="quotes" data-glow data-stagger data-reveal>
-          <figure class="quote">
-            <blockquote>« Lumen a compris notre métier en deux réunions. Le nouveau site nous apporte des demandes de devis chaque semaine — avant, c’était une par mois. »</blockquote>
-            <figcaption><span class="avatar">JV</span><span><strong>Julien Verdier</strong>Gérant, Maison Verdier</span></figcaption>
-          </figure>
-          <figure class="quote">
-            <blockquote>« Leur force, c’est de relier la stratégie et l’exécution. On ne parle pas de “joli site”, on parle de chiffre d’affaires. »</blockquote>
-            <figcaption><span class="avatar">SL</span><span><strong>Sophie Lambert</strong>Associée, Cabinet Arpège</span></figcaption>
-          </figure>
-          <figure class="quote">
-            <blockquote>« Une équipe exigeante, réactive et transparente sur les délais. Notre taux de conversion a doublé en trois mois. »</blockquote>
-            <figcaption><span class="avatar">KB</span><span><strong>Karim Benali</strong>CEO, Nova Mobilité</span></figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ OFFRES ============ -->
-    <!-- Tarifs d'exemple : à ajuster -->
-    <section class="section" id="offres">
-      <div class="container">
-        <hr class="rule" data-reveal="line">
-        <header class="section-head">
-          <span class="label" data-reveal>Offres</span>
-          <h2 class="h-lg" data-split>Des formules claires, sans surprise.</h2>
-          <p class="lead" data-reveal style="--d:3">Chaque projet commence par un devis détaillé. Voici nos points de départ les plus fréquents.</p>
-        </header>
-
-        <div class="plans" data-glow data-stagger data-reveal>
-          <article class="plan">
-            <span class="tag">Pour démarrer</span>
-            <h3 class="plan__name">Audit Express</h3>
-            <p class="plan__desc">Un diagnostic complet de votre présence en ligne et une feuille de route priorisée.</p>
-            <p class="plan__price"><small>à partir de</small><span><span data-count="1490">1 490</span>&nbsp;€</span><small>HT</small></p>
-            <ul class="plan__list">
-              <li>Audit technique, SEO &amp; performance</li>
-              <li>Analyse de trois concurrents</li>
-              <li>Atelier stratégique de deux heures</li>
-              <li>Feuille de route sur six mois</li>
-            </ul>
-            <a class="btn btn--ghost" href="#contact" data-arrow>Choisir l’audit</a>
-          </article>
-
-          <article class="plan plan--featured">
-            <span class="plan__ribbon">Le plus choisi</span>
-            <span class="tag">Création</span>
-            <h3 class="plan__name">Site Signature</h3>
-            <p class="plan__desc">Un site vitrine sur-mesure, rapide et pensé pour convertir vos visiteurs en clients.</p>
-            <p class="plan__price"><small>à partir de</small><span><span data-count="6900">6 900</span>&nbsp;€</span><small>HT</small></p>
-            <ul class="plan__list">
-              <li>Stratégie, positionnement &amp; arborescence</li>
-              <li>Design UX/UI sur-mesure</li>
-              <li>Développement &amp; CMS facile à prendre en main</li>
-              <li>SEO technique et contenus clés</li>
-              <li>Formation et trois mois de suivi</li>
-            </ul>
-            <div class="cta-pair cta-pair--stack">
-              <a class="btn btn--primary" href="#contact" data-magnetic data-arrow>Démarrer mon site</a>
-              <a class="btn btn--ghost" href="#methode">Voir la méthode</a>
-            </div>
-          </article>
-
-          <article class="plan">
-            <span class="tag">Accompagnement</span>
-            <h3 class="plan__name">Croissance</h3>
-            <p class="plan__desc">Un partenaire digital qui améliore vos résultats, mois après mois.</p>
-            <p class="plan__price"><small>à partir de</small><span><span data-count="890">890</span>&nbsp;€</span><small>HT / mois</small></p>
-            <ul class="plan__list">
-              <li>Consultant dédié</li>
-              <li>Optimisation continue &amp; A/B tests</li>
-              <li>Contenus SEO mensuels</li>
-              <li>Reporting et point mensuel</li>
-            </ul>
-            <a class="btn btn--ghost" href="#contact" data-arrow>Être accompagné</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ FAQ ============ -->
-    <section class="section" id="faq">
-      <div class="container faq">
-        <header class="section-head faq__head">
-          <span class="label" data-reveal>Questions fréquentes</span>
-          <h2 class="h-lg" data-split>Tout ce que vous vous demandez.</h2>
-          <p class="lead" data-reveal style="--d:3">Une autre question&nbsp;? <a class="underline" href="mailto:bonjour@lumen-conseil.fr">Écrivez-nous</a>, nous répondons sous 24&nbsp;h.</p>
-        </header>
-
-        <div class="faq__list" data-stagger>
-          <details class="faq__item" data-reveal>
-            <summary>Combien de temps faut-il pour créer un site&nbsp;?<span class="faq__icon" aria-hidden="true"></span></summary>
-            <div class="faq__answer"><p>Comptez quatre à huit semaines pour un site vitrine, du diagnostic à la mise en ligne. Un audit express est livré en deux semaines. Vous recevez un planning précis dès le premier rendez-vous.</p></div>
-          </details>
-          <details class="faq__item" data-reveal>
-            <summary>Travaillez-vous avec des entreprises de toute taille&nbsp;?<span class="faq__icon" aria-hidden="true"></span></summary>
-            <div class="faq__answer"><p>Oui&nbsp;: indépendants, PME, startups et ETI. Nos offres sont modulables et nous adaptons l’équipe à l’ampleur de votre projet.</p></div>
-          </details>
-          <details class="faq__item" data-reveal>
-            <summary>Serai-je autonome pour modifier mon site&nbsp;?<span class="faq__icon" aria-hidden="true"></span></summary>
-            <div class="faq__answer"><p>Absolument. Nous intégrons un CMS simple, choisi selon vos besoins, et nous formons vos équipes. Vous restez propriétaire de votre site, de vos contenus et de vos données.</p></div>
-          </details>
-          <details class="faq__item" data-reveal>
-            <summary>Peut-on faire appel à vous uniquement pour du conseil&nbsp;?<span class="faq__icon" aria-hidden="true"></span></summary>
-            <div class="faq__answer"><p>Oui. Nos missions de conseil — positionnement, stratégie d’acquisition, organisation commerciale — peuvent être menées indépendamment de toute création de site.</p></div>
-          </details>
-          <details class="faq__item" data-reveal>
-            <summary>Que se passe-t-il après la mise en ligne&nbsp;?<span class="faq__icon" aria-hidden="true"></span></summary>
-            <div class="faq__answer"><p>Chaque projet inclut trois mois de suivi. Vous pouvez ensuite rejoindre l’offre Croissance pour une optimisation continue, ou nous solliciter ponctuellement.</p></div>
-          </details>
-          <details class="faq__item" data-reveal>
-            <summary>Comment se déroule le premier rendez-vous&nbsp;?<span class="faq__icon" aria-hidden="true"></span></summary>
-            <div class="faq__answer"><p>Un appel visio de trente minutes, gratuit et sans engagement, pour comprendre votre activité et vos objectifs. Vous repartez avec au moins trois recommandations concrètes, que nous travaillions ensemble ou non.</p></div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ CONTACT ============ -->
-    <section class="section contact-section" id="contact">
-      <div class="container">
-        <div class="contact" data-reveal="scale" data-cursor="light">
-          <div class="contact__bg" aria-hidden="true"><span></span><span></span><span></span></div>
-
-          <div class="contact__copy">
-            <span class="label label--light">Contact</span>
-            <h2 class="h-lg" data-split>Parlons de votre projet.</h2>
-            <p class="contact__lead">Un appel de trente minutes, gratuit et sans engagement. Vous repartez avec des recommandations concrètes, quoi que vous décidiez.</p>
-            <ol class="contact__steps">
-              <li><span>1</span>Vous nous décrivez votre besoin</li>
-              <li><span>2</span>Nous revenons vers vous sous 24&nbsp;h</li>
-              <li><span>3</span>Vous recevez une proposition claire et chiffrée</li>
-            </ol>
-            <div class="contact__direct">
-              <a href="mailto:bonjour@lumen-conseil.fr" data-arrow>bonjour@lumen-conseil.fr</a>
-              <a href="tel:+33123456789" data-arrow>01 23 45 67 89</a>
-            </div>
-          </div>
-
-          <form class="form" data-form data-email="bonjour@lumen-conseil.fr" data-cursor="dark" novalidate>
+          <form class="form" data-form data-email="elliotmoosera@gmail.com" novalidate>
             <div class="form__row">
               <div class="field">
-                <label for="f-name">Nom complet</label>
-                <input id="f-name" name="nom" type="text" autocomplete="name" required placeholder="Camille Martin" aria-describedby="f-name-err" data-error="Indiquez votre nom.">
-                <span class="field__error" id="f-name-err"></span>
+                <label for="f-nom">Votre nom</label>
+                <input id="f-nom" name="nom" type="text" autocomplete="name" required aria-describedby="f-nom-err" data-error="Indiquez votre nom.">
+                <span class="field__error" id="f-nom-err"></span>
               </div>
               <div class="field">
-                <label for="f-company">Entreprise</label>
-                <input id="f-company" name="entreprise" type="text" autocomplete="organization" placeholder="Votre entreprise">
+                <label for="f-entreprise">Entreprise <span class="optional">(facultatif)</span></label>
+                <input id="f-entreprise" name="entreprise" type="text" autocomplete="organization">
               </div>
             </div>
             <div class="field">
-              <label for="f-email">E-mail professionnel</label>
-              <input id="f-email" name="email" type="email" autocomplete="email" required placeholder="camille@entreprise.fr" aria-describedby="f-email-err" data-error="Indiquez une adresse e-mail valide.">
-              <span class="field__error" id="f-email-err"></span>
-            </div>
-            <div class="field">
-              <label for="f-need">Votre besoin</label>
-              <div class="select">
-                <select id="f-need" name="besoin">
-                  <option>Création d’un nouveau site</option>
-                  <option>Refonte d’un site existant</option>
-                  <option>Conseil stratégique</option>
-                  <option>Audit digital</option>
-                  <option>SEO &amp; contenus</option>
-                  <option>Je ne sais pas encore</option>
-                </select>
-              </div>
+              <label for="f-contact">E-mail ou téléphone</label>
+              <input id="f-contact" name="contact" type="text" autocomplete="email" required aria-describedby="f-contact-err" data-error="Indiquez un e-mail ou un numéro de téléphone valide.">
+              <span class="field__error" id="f-contact-err"></span>
             </div>
             <fieldset class="field">
-              <legend>Budget estimé</legend>
-              <div class="chips">
-                <label class="chip"><input type="radio" name="budget" value="Moins de 3 000 €"><span>&lt; 3 k€</span></label>
-                <label class="chip"><input type="radio" name="budget" value="3 000 – 8 000 €" checked><span>3 – 8 k€</span></label>
-                <label class="chip"><input type="radio" name="budget" value="8 000 – 20 000 €"><span>8 – 20 k€</span></label>
-                <label class="chip"><input type="radio" name="budget" value="Plus de 20 000 €"><span>20 k€ +</span></label>
+              <legend>De quoi avez-vous besoin ? <span class="optional">(plusieurs choix possibles)</span></legend>
+              <div class="choices">
+                <label class="choice"><input type="checkbox" name="besoin" value="Un premier site"><span>Un premier site</span></label>
+                <label class="choice"><input type="checkbox" name="besoin" value="Refaire mon site"><span>Refaire mon site</span></label>
+                <label class="choice"><input type="checkbox" name="besoin" value="Fiche Google"><span>Fiche Google</span></label>
+                <label class="choice"><input type="checkbox" name="besoin" value="Je ne sais pas encore"><span>Je ne sais pas encore</span></label>
               </div>
             </fieldset>
             <div class="field">
-              <label for="f-msg">Votre projet en quelques mots</label>
-              <textarea id="f-msg" name="message" rows="4" placeholder="Objectifs, délais, site actuel…"></textarea>
+              <label for="f-message">Votre activité en quelques mots <span class="optional">(facultatif)</span></label>
+              <textarea id="f-message" name="message" rows="4" placeholder="Ex. : boulangerie à Carouge, pas encore de site, j’aimerais afficher mes horaires et mes produits."></textarea>
             </div>
-            <div class="cta-pair">
-              <button class="btn btn--primary" type="submit" data-magnetic data-arrow>Envoyer ma demande</button>
-              <a class="btn btn--ghost" href="tel:+33123456789">Nous appeler</a>
-            </div>
+            <button class="btn btn--primary btn--block" type="submit">
+              Envoyer ma demande
+              <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </button>
+            <p class="form__legal">Le bouton ouvre votre messagerie avec la demande pré-remplie : rien n’est enregistré sur ce site. <a href="confidentialite.html">Protection des données</a></p>
             <p class="form__status" role="status" aria-live="polite"></p>
           </form>
         </div>
@@ -810,55 +587,55 @@
     </section>
   </main>
 
-  <!-- ============ FOOTER ============ -->
+  <!-- ===================== FOOTER ===================== -->
   <footer class="footer">
     <div class="container">
       <div class="footer__grid">
         <div class="footer__brand">
-          <a class="brand" href="#top" aria-label="Lumen — retour en haut">
-            <svg class="brand__mark" viewBox="0 0 28 28" aria-hidden="true">
-              <rect width="28" height="28" rx="5" fill="#533afd"/>
-              <path d="M9 7v14h11" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="square"/>
-              <rect x="16" y="7" width="5" height="5" fill="#b9b9f9"/>
-            </svg>
-            <span class="brand__name">lumen</span>
+          <a class="brand" href="#top" aria-label="Établi, retour en haut de page">
+            <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+          <rect x="3" y="16" width="26" height="4.5" rx="1.6" fill="url(#etabli-wood)"/>
+          <rect x="6.5" y="20" width="3.2" height="8" rx="1.1" fill="url(#etabli-wood)"/>
+          <rect x="22.3" y="20" width="3.2" height="8" rx="1.1" fill="url(#etabli-wood)"/>
+          <rect x="14.2" y="3.5" width="4.2" height="10" rx="1.6" fill="url(#etabli-pencil)" transform="rotate(32 16.3 8.5)"/>
+        </svg>
+            <span class="brand__name">Établi</span>
           </a>
-          <p>Conseil et création de sites web pour les entreprises qui veulent grandir.</p>
-          <a class="link" href="#contact" data-arrow>Réserver un appel</a>
+          <p>Des sites clairs et abordables pour les petites entreprises de Genève.</p>
         </div>
-        <nav class="footer__col" aria-label="Services">
-          <h3>Services</h3>
-          <a href="#services" data-roll>Stratégie</a>
-          <a href="#services" data-roll>Audit digital</a>
-          <a href="#services" data-roll>Design UX/UI</a>
-          <a href="#services" data-roll>Développement</a>
-          <a href="#services" data-roll>SEO &amp; contenus</a>
-        </nav>
-        <nav class="footer__col" aria-label="Agence">
-          <h3>Agence</h3>
-          <a href="#methode" data-roll>Méthode</a>
-          <a href="#realisations" data-roll>Réalisations</a>
-          <a href="#offres" data-roll>Offres</a>
-          <a href="#faq" data-roll>FAQ</a>
+        <nav class="footer__col" aria-label="Plan du site">
+          <h3>Le site</h3>
+          <a href="#offres">Offres &amp; tarifs</a>
+          <a href="#methode">Méthode</a>
+          <a href="#a-propos">À propos</a>
+          <a href="#faq">Questions fréquentes</a>
         </nav>
         <div class="footer__col">
           <h3>Contact</h3>
-          <a href="mailto:bonjour@lumen-conseil.fr" data-roll>bonjour@lumen-conseil.fr</a>
-          <a href="tel:+33123456789" data-roll>01 23 45 67 89</a>
-          <p>Paris &amp; partout en France,<br>à distance.</p>
+          <a href="tel:+41788480878">078 848 08 78</a>
+          <a href="mailto:elliotmoosera@gmail.com">elliotmoosera@gmail.com</a>
+          <p>Genève, Suisse</p>
+        </div>
+        <div class="footer__col">
+          <h3>Informations</h3>
+          <a href="mentions-legales.html">Mentions légales</a>
+          <a href="confidentialite.html">Protection des données</a>
+          <p>Prix en CHF, sans TVA (non assujetti).</p>
         </div>
       </div>
-
       <div class="footer__bottom">
-        <span>© <span data-year>2026</span> Lumen. Tous droits réservés.</span>
-        <div class="footer__legal">
-          <a href="#" data-roll>Mentions légales</a>
-          <a href="#" data-roll>Confidentialité</a>
-          <a href="#top" class="footer__top" data-roll>Retour en haut ↑</a>
-        </div>
+        <span>© <span data-year>2026</span> Établi · Elliot Mooser, Genève</span>
+        <a href="#top">Retour en haut ↑</a>
       </div>
     </div>
-    <div class="footer__word" aria-hidden="true"><span data-reveal="rise">lumen</span></div>
   </footer>
+
+  <div class="action-bar" data-action-bar>
+    <a class="btn btn--ghost" href="tel:+41788480878">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+      Appeler
+    </a>
+    <a class="btn btn--primary" href="#contact">Demander un devis</a>
+  </div>
 </body>
 </html>
