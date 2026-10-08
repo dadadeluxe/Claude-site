@@ -389,6 +389,7 @@
       if (!target.hasAttribute('tabindex') && !target.matches('a, button, input, select, textarea, summary')) {
         target.setAttribute('tabindex', '-1');
       }
+      if (target.matches('details')) target.open = true;
       target.focus({ preventScroll: true });
       if (target.matches('.plan')) flashTarget(target);
       flashChoice(choice);
@@ -514,10 +515,10 @@
       ].join('\n');
       const subject = `Demande de devis — ${data.get('entreprise') || data.get('nom')}`;
       window.location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      status.textContent = `Votre messagerie s’ouvre avec la demande pré-remplie : il ne reste qu’à l’envoyer. Rien ne s’ouvre ? Écrivez à ${form.dataset.email} ou appelez le ${form.dataset.phone}.`;
+      status.textContent = `Votre messagerie devrait s’ouvrir avec la demande pré-remplie : il ne reste qu’à l’envoyer. Rien ne s’ouvre ? Écrivez à ${form.dataset.email} ou appelez le ${form.dataset.phone}.`;
       if (submit && submitLabel) {
         submit.classList.add('is-done');
-        submitLabel.textContent = 'Messagerie ouverte ✓';
+        submitLabel.textContent = 'Demande préparée ✓';
         setTimeout(() => { submit.classList.remove('is-done'); submitLabel.textContent = 'Envoyer ma demande'; }, 4000);
       }
     });
@@ -535,5 +536,12 @@
     $$('[data-reveal], [data-split]').forEach((el) => revealIO.observe(el));
     moveIndicator(activeLink);
     update();
+    // Filet de sécurité : ce qui est déjà à l'écran ne reste jamais invisible
+    setTimeout(() => {
+      $$('[data-reveal]:not(.is-in), [data-split]:not(.is-in)').forEach((el) => {
+        const r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('is-in');
+      });
+    }, 2500);
   });
 })();

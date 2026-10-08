@@ -419,7 +419,8 @@ sup { font-size: .68em; line-height: 0; vertical-align: super; }
 /* ---------- Navigation ---------- */
 .nav {
   position: fixed; inset: 0 0 auto; z-index: 50;
-  height: var(--nav-h);
+  height: calc(var(--nav-h) + env(safe-area-inset-top, 0px));
+  padding-top: env(safe-area-inset-top, 0px);
   transition: transform .5s var(--ease);
 }
 .nav::before {
@@ -498,7 +499,7 @@ sup { font-size: .68em; line-height: 0; vertical-align: super; }
 .nav.is-open .nav__toggle span:last-child { transform: translateY(-3.75px) rotate(-45deg); }
 
 .mobile-menu {
-  position: fixed; inset: var(--nav-h) 0 0;
+  position: fixed; inset: calc(var(--nav-h) + env(safe-area-inset-top, 0px)) 0 0;
   display: flex; flex-direction: column; justify-content: space-between; gap: 32px;
   padding: 16px 0 calc(32px + env(safe-area-inset-bottom));
   background: var(--bg);
@@ -1002,7 +1003,7 @@ sup { font-size: .68em; line-height: 0; vertical-align: super; }
 @property --angle { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
 
 /* ---------- Progression de lecture (repère discret en haut) ---------- */
-.progress { position: fixed; inset: 0 0 auto; z-index: 60; height: 2px; pointer-events: none; }
+.progress { position: fixed; inset: env(safe-area-inset-top, 0px) 0 auto; z-index: 60; height: 2px; pointer-events: none; }
 .progress i {
   display: block; height: 100%;
   background: linear-gradient(90deg, var(--accent), var(--accent-text) 75%, #cfc9fa);
