@@ -298,6 +298,52 @@
   }
 
   /* ---------------------------------------------------------------------
+     Défilement fluide vers les ancres de la page
+     Piloté en JS (même rendu sur tous les navigateurs, compensation de la
+     barre de navigation, arrêt immédiat si le visiteur reprend la main).
+     --------------------------------------------------------------------- */
+  const easeInOut = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+  let scrollRun = null;
+
+  function stopScroll() {
+    if (!scrollRun) return;
+    cancelAnimationFrame(scrollRun.raf);
+    root.style.scrollBehavior = '';
+    scrollRun.done();
+    scrollRun = null;
+  }
+  ['wheel', 'touchstart', 'keydown'].forEach((type) => window.addEventListener(type, stopScroll, { passive: true }));
+
+  function smoothScrollTo(target) {
+    stopScroll();
+    const offset = target.id === 'top' ? 0 : parseFloat(getComputedStyle(root).scrollPaddingTop) || 0;
+    const max = root.scrollHeight - window.innerHeight;
+    const from = window.scrollY;
+    const to = clamp(target.getBoundingClientRect().top + from - offset, 0, max);
+    const distance = to - from;
+    // Assez long pour suivre le mouvement, jamais lent : 0,55 à 1,1 s selon la distance
+    const duration = motionOK ? clamp(Math.abs(distance) * 0.35, 550, 1100) : 280;
+    return new Promise((resolve) => {
+      if (Math.abs(distance) < 2) { resolve(); return; }
+      root.style.scrollBehavior = 'auto';
+      const start = performance.now();
+      scrollRun = { raf: 0, done: resolve };
+      const step = (now) => {
+        const t = clamp((now - start) / duration, 0, 1);
+        window.scrollTo(0, from + distance * easeInOut(t));
+        if (t < 1) {
+          scrollRun.raf = requestAnimationFrame(step);
+        } else {
+          root.style.scrollBehavior = '';
+          scrollRun = null;
+          resolve();
+        }
+      };
+      scrollRun.raf = requestAnimationFrame(step);
+    });
+  }
+
+  /* ---------------------------------------------------------------------
      Continuité offre → contact : toute la carte d'offre est cliquable,
      l'offre choisie est cochée dans le formulaire et mise en évidence
      --------------------------------------------------------------------- */
@@ -312,22 +358,42 @@
   }
 
   function selectOffer(value) {
-    if (!form) return;
+    if (!form) return null;
     const box = $$('input[name="besoin"]', form).find((i) => i.value === value);
-    if (!box) return;
+    if (!box) return null;
     box.checked = true;
-    const choice = box.closest('.choice');
-    if (!motionOK || !choice) return;
-    // La mise en évidence se joue une fois le formulaire à l'écran
-    setTimeout(() => {
-      choice.classList.remove('is-flash');
-      void choice.offsetWidth;
-      choice.classList.add('is-flash');
-      setTimeout(() => choice.classList.remove('is-flash'), 1500);
-    }, 650);
+    return box.closest('.choice');
   }
 
-  $$('[data-offer]').forEach((el) => el.addEventListener('click', () => selectOffer(el.dataset.offer)));
+  function flashChoice(choice) {
+    if (!choice || !motionOK) return;
+    choice.classList.remove('is-flash');
+    void choice.offsetWidth;
+    choice.classList.add('is-flash');
+    setTimeout(() => choice.classList.remove('is-flash'), 1500);
+  }
+
+  // Tous les liens internes (#…) : défilement fluide, puis mise en évidence
+  // de ce qui attend le visiteur à l'arrivée
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const hash = a.getAttribute('href');
+    if (hash.length < 2) return;
+    const target = document.getElementById(decodeURIComponent(hash.slice(1)));
+    if (!target) return;
+    e.preventDefault();
+    const choice = a.dataset.offer ? selectOffer(a.dataset.offer) : null;
+    smoothScrollTo(target).then(() => {
+      if (history.pushState) history.pushState(null, '', hash);
+      if (!target.hasAttribute('tabindex') && !target.matches('a, button, input, select, textarea, summary')) {
+        target.setAttribute('tabindex', '-1');
+      }
+      target.focus({ preventScroll: true });
+      if (target.matches('.plan')) flashTarget(target);
+      flashChoice(choice);
+    });
+  });
 
   $$('.plan').forEach((plan) => {
     const cta = $('[data-offer]', plan);
@@ -338,12 +404,6 @@
       cta.click();
     });
   });
-
-  // Arrivée sur une offre depuis le constat : la carte s'illumine
-  $$('a[href^="#offre-"]').forEach((a) => a.addEventListener('click', () => {
-    const target = $(a.getAttribute('href'));
-    setTimeout(() => flashTarget(target), motionOK ? 500 : 0);
-  }));
 
   /* ---------------------------------------------------------------------
      Copier l'adresse e-mail (utile si aucune messagerie n'est configurée)

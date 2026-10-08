@@ -123,6 +123,8 @@ button { cursor: pointer; }
 
 ::selection { background: rgba(124, 110, 230, 0.35); color: var(--text-hi); }
 
+[tabindex="-1"]:focus { outline: none; }
+
 :focus-visible {
   outline: 2px solid var(--accent-text);
   outline-offset: 3px;
