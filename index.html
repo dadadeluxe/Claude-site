@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BM Immo — Immobilier en Suisse</title>
+  <meta name="description" content="BM Immo — achat, vente et location de biens immobiliers en Suisse.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Aller au contenu</a>
+
+  <header class="nav" id="nav">
+    <div class="nav__inner container">
+      <a href="#accueil" class="brand" aria-label="BM Immo, accueil">
+        <span class="brand__mark">BM</span><span class="brand__name">Immo</span>
+      </a>
+      <nav class="nav__links" id="menu" aria-label="Navigation principale">
+        <a href="#accueil" class="is-active">Accueil</a>
+        <div class="has-sub">
+          <button class="sub-toggle" aria-expanded="false" aria-controls="sub-services">Services
+            <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+          </button>
+          <div class="submenu" id="sub-services">
+            <a href="#services"><strong>Vente</strong><span>Estimation et commercialisation</span></a>
+            <a href="#services"><strong>Location</strong><span>Mise en location et gérance</span></a>
+            <a href="#services"><strong>Conseil</strong><span>Accompagnement sur mesure</span></a>
+          </div>
+        </div>
+        <a href="#biens">Nos biens</a>
+        <a href="#agence">L'agence</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#contact" class="btn btn--small nav__cta">Estimer mon bien</a>
+      <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="accueil">
+      <div class="hero__media" data-parallax>
+        <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=2000&q=80" alt="Villa contemporaine au bord d'un lac" fetchpriority="high">
+      </div>
+      <div class="hero__veil"></div>
+      <div class="container hero__content">
+        <p class="eyebrow reveal">Agence immobilière · Suisse</p>
+        <h1 class="hero__title"><span class="line"><span>L'art de trouver</span></span><span class="line"><span><em>le lieu</em> qui vous ressemble</span></span></h1>
+        <p class="hero__lead reveal" style="--d:.5s">Achat, vente et location de biens d'exception, avec un accompagnement discret et personnalisé.</p>
+
+        <form class="search reveal" style="--d:.65s" id="search" role="search">
+          <label class="field"><span>Transaction</span>
+            <select name="type"><option value="">Tout</option><option value="vente">Acheter</option><option value="location">Louer</option></select>
+          </label>
+          <label class="field"><span>Type de bien</span>
+            <select name="kind"><option value="">Tous</option><option value="villa">Villa</option><option value="appartement">Appartement</option><option value="chalet">Chalet</option></select>
+          </label>
+          <label class="field"><span>Pièces min.</span>
+            <select name="rooms"><option value="0">Indifférent</option><option value="3">3+</option><option value="4">4+</option><option value="5">5+</option></select>
+          </label>
+          <button class="btn" type="submit">Rechercher
+            <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M14 14l4 4" stroke="currentColor" stroke-width="1.6"/></svg>
+          </button>
+        </form>
+      </div>
+      <a href="#biens" class="scroll-cue" aria-label="Défiler vers les biens"><span></span></a>
+    </section>
+
+    <section class="section" id="biens">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <p class="eyebrow reveal">Sélection</p>
+            <h2 class="title reveal">Nos biens <em>du moment</em></h2>
+          </div>
+          <div class="chips reveal" role="group" aria-label="Filtrer les biens">
+            <button class="chip is-on" data-filter="">Tous</button>
+            <button class="chip" data-filter="vente">À vendre</button>
+            <button class="chip" data-filter="location">À louer</button>
+          </div>
+        </div>
+        <div class="grid" id="grid"></div>
+        <p class="empty" id="empty" hidden>Aucun bien ne correspond à votre recherche.</p>
+      </div>
+    </section>
+
+    <section class="section section--tint" id="services">
+      <div class="container">
+        <p class="eyebrow reveal">Services</p>
+        <h2 class="title reveal">Un accompagnement <em>à chaque étape</em></h2>
+        <div class="services">
+          <article class="service reveal">
+            <span class="service__num">01</span>
+            <h3>Vente</h3>
+            <p>Estimation précise, mise en valeur photographique et commercialisation ciblée de votre bien.</p>
+          </article>
+          <article class="service reveal" style="--d:.1s">
+            <span class="service__num">02</span>
+            <h3>Location</h3>
+            <p>Sélection rigoureuse des locataires, rédaction des baux et suivi de la gérance.</p>
+          </article>
+          <article class="service reveal" style="--d:.2s">
+            <span class="service__num">03</span>
+            <h3>Conseil</h3>
+            <p>Analyse de marché, stratégie patrimoniale et accompagnement jusqu'à la signature.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section split" id="agence">
+      <div class="container split__inner">
+        <figure class="split__media reveal-img">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80" alt="Intérieur lumineux d'une maison contemporaine" loading="lazy">
+        </figure>
+        <div class="split__text">
+          <p class="eyebrow reveal">L'agence</p>
+          <h2 class="title reveal">La confiance, <em>pierre après pierre</em></h2>
+          <p class="reveal">BM Immo accompagne propriétaires et acquéreurs avec exigence, transparence et une connaissance fine du marché local.</p>
+          <dl class="stats">
+            <div class="reveal"><dt>—</dt><dd>Années d'expérience</dd></div>
+            <div class="reveal" style="--d:.1s"><dt>—</dt><dd>Biens accompagnés</dd></div>
+            <div class="reveal" style="--d:.2s"><dt>—</dt><dd>Clients satisfaits</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--dark" id="contact">
+      <div class="container contact">
+        <div>
+          <p class="eyebrow reveal">Contact</p>
+          <h2 class="title reveal">Parlons de <em>votre projet</em></h2>
+          <p class="reveal muted">Adresse, téléphone et e-mail : à compléter avec vos coordonnées.</p>
+        </div>
+        <form class="form reveal" id="contact-form" novalidate>
+          <label class="float"><input name="name" required placeholder=" " autocomplete="name"><span>Nom</span></label>
+          <label class="float"><input name="email" type="email" required placeholder=" " autocomplete="email"><span>E-mail</span></label>
+          <label class="float float--full"><textarea name="msg" rows="4" required placeholder=" "></textarea><span>Votre message</span></label>
+          <button class="btn btn--light" type="submit">Envoyer le message</button>
+          <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="brand"><span class="brand__mark">BM</span><span class="brand__name">Immo</span></span>
+      <p>© <span id="year"></span> BM Immo. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
